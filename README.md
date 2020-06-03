@@ -82,8 +82,14 @@ userName: String, required: true, unique: true, maxlength: 20
 shop list
 
 shopList new Schema ({
-_id: Name: [string],  Type: enum { Pet: [String], books: [String], potions: [String],
-})
+
+_id: icon: enum ["cat", "dog", "hippo", "rat"] required: true, 
+
+name: [string], required: true, unique: true, 
+
+itemType: enum [ "pet", "books", "potions"], required:true , 
+
+author: unique: true, required: true })
   
 ## Links
 ### Trello
