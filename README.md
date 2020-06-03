@@ -94,17 +94,16 @@ location: String
 attendees: [ObjectId<User>]
   
 ## Links
-Trello
-Link to your trello board or picture of your physical board
+### Trello
 
-Git
-The url to your repository and to your deployed project
+
+### Git
 
 Repository Link
 
 Deploy Link
 
-Slides
-The url to your presentation slides
+### Slides
 
-Slides Link
+
+
