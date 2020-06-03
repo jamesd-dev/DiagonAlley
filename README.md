@@ -70,20 +70,19 @@ GET/profile/potions
 renders potions store
 
 ## Models
-user model 
+### user model 
 
 new Schema ({
-_id: , 
-email: String, required: true, unique: true,
+_id: , email: String, required: true, unique: true,
 password: String, minlength: 6, maxlength: 30,
 userName: String, required: true, unique: true, maxlength: 20 
 }) 
 
-shop list
+### shop list
 
 shopList new Schema ({
 
-_id: icon: enum ["cat", "dog", "hippo", "rat"] required: true, 
+_id: icon: Image, enum ["cat", "dog, "hippo", "rat"] required: true, 
 
 name: [string], required: true, unique: true, 
 
