@@ -91,11 +91,10 @@ https://trello.com/b/BXQiE1Qs/hogwarts
 
 ### Git
 
-Repository Link
+https://github.com/polymurph13/DiagonAlley
 
 Deploy Link
 
 ### Slides
 
-
-
+Link
