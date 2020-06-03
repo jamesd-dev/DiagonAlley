@@ -70,7 +70,7 @@ GET/profile/potions
 renders potions store
 
 ## Models
-user model 
+### user model 
 
 new Schema ({
 _id: , 
@@ -83,7 +83,7 @@ userName: String, required: true, unique: true, maxlength: 20
 hogwartHouse: String, required: true
 }) 
 
-shop list
+### shop list
 
 shopList new Schema ({
 
