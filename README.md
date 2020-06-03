@@ -73,17 +73,22 @@ renders potions store
 user model 
 
 new Schema ({
-_id: , 
+_id: 
+
 email: String, required: true, unique: true,
+
 password: String, minlength: 6, maxlength: 30,
+
 userName: String, required: true, unique: true, maxlength: 20 
+
+hogwartHouse: String, required: true
 }) 
 
 shop list
 
 shopList new Schema ({
 
-_id: icon: enum ["cat", "dog", "hippo", "rat"] required: true, 
+_id: icon: Image, enum ["cat", "hat", "wand", "dog", "hippo", "rat"] required: true, 
 
 name: [string], required: true, unique: true, 
 
