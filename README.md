@@ -7,26 +7,22 @@ Shopping app for the ambitious young wizard or witch
 - homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
 - sign up - As a user I want to sign up on the webpage so that I can see all the events that I could attend
 - login - As a user I want to be able to log in on the webpage so that I can get back to my account
-- shop list - As a user I want to be able to purchase the items from the shop list
--  - As a user I want to create an event so that I can invite others to attend
-- events detail - As a user I want to see the event details and attendee list of one event so that I can decide if I want to -  attend
-- event attend - As a user I want to be able to attend to event so that the organizers can count me in
+- letter - As a user i want to be able to see my acceptance letter to Hogwarts once i sign up. 
+- profile - As a user i want to be able to see my profile, where i can see which house im a part of and the items i bought. 
+- shop - As a user I want to be able to purchase the items from the shop list
+
 ## Backlog
 - logout - As a user i want to be able to log out of my account
+- extra pages - apart from the shop page 
+- potions instagram - an instagram like feature for potions you can create
 
 ## User profile:
 
 see my profile
-upload my profile picture
-see other users profile
-list of events created by the user
-list events the user is attending
-Geo Location:
+emblem what house theyre in
+how much money they have 
+what items you own
 
-add geolocation to events when creating
-show event in a map in event detail page
-show all events in a map in the event list page
-Homepage
 
 ...
 ## ROUTES:
@@ -40,7 +36,7 @@ renders the signup form (with flash msg)
 POST /auth/signup
 
 redirects to / if user logged in
-body:
+profile:
 username
 email
 password
@@ -56,11 +52,11 @@ username
 password
 POST /auth/logout
 
-body: (empty)
-GET /events
+POST /profile
 
-renders the event list + the create form
-POST /events/create
+
+
+POST /shop/create
 
 redirects to / if user is anonymous
 body:
@@ -68,7 +64,7 @@ name
 date
 location
 description
-GET /events/:id
+GET /profile/:id
 
 renders the event detail page
 includes the list of attendees
@@ -79,22 +75,22 @@ redirects to / if user is anonymous
 body: (empty - the user is already stored in the session)
 
 ## Models
-User model
+user model 
+new Schema ({
+_id: , 
+email: String, required: true, unique: true,
+password: String, minlength: 6, maxlength: 30,
+userName: String, required: true, unique: true, maxlength: 20 
+}) 
 
-username: String
-password: String
-Event model
-
-owner: ObjectId<User>
-name: String
-description: String
-date: Date
-location: String
-attendees: [ObjectId<User>]
+shop list
+shopList new Schema ({
+_id: , pets: [String], books: [String], potions: [String]
+})
   
 ## Links
 ### Trello
-
+https://trello.com/b/BXQiE1Qs/hogwarts
 
 ### Git
 
