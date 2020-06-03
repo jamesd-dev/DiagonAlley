@@ -68,12 +68,12 @@ router.post('/signup', (req, res) => {
 
 });
 
-router.get('/signin', (req, res) => {
-  res.render('auth/signin.hbs');
+router.get('/login', (req, res) => {
+  res.render('auth/login.hbs');
 });
 
 
-router.post('/signin', (req, res) => {
+router.post('/login', (req, res) => {
   const {email, password } = req.body;
   if ( !email || !password) {
     res.status(500)
@@ -108,7 +108,7 @@ router.post('/signin', (req, res) => {
               //if passwords do not match
               else {
                 res.status(500)
-                  .render('auth/signin.hbs', {
+                  .render('auth/login.hbs', {
                     errorMessage: 'Passwords don\'t match'
                   });
                 return; 
@@ -116,7 +116,7 @@ router.post('/signin', (req, res) => {
           })
           .catch(() => {
             res.status(500)
-            .render('auth/signin.hbs', {
+            .render('auth/login.hbs', {
               errorMessage: 'Something wen\'t wrong!'
             });
             return; 
@@ -125,7 +125,7 @@ router.post('/signin', (req, res) => {
     //throw an error if the user does not exists 
     .catch(() => {
       res.status(500)
-        .render('auth/signin.hbs', {
+        .render('auth/login.hbs', {
           errorMessage: 'Something went wrong'
         });
       return;  

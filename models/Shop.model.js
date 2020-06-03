@@ -4,7 +4,7 @@ const shopSchema = new Schema(
   {
     icon: {
       type: String,
-      enum: [],
+      enum: [], // add the giant list of icons later. too lazy
       required: [true, 'Must include an icon']
     },
     name: {
