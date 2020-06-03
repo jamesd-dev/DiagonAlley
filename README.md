@@ -77,13 +77,14 @@ _id: ,
 email: String, required: true, unique: true,
 password: String, minlength: 6, maxlength: 30,
 userName: String, required: true, unique: true, maxlength: 20 
+hogwartHouse: String, required: true
 }) 
 
 shop list
 
 shopList new Schema ({
 
-_id: icon: enum ["cat", "dog", "hippo", "rat"] required: true, 
+_id: icon: Image, enum ["cat", "book", "potion", "hippo", "rat"] required: true, 
 
 name: [string], required: true, unique: true, 
 
