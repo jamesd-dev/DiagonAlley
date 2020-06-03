@@ -82,7 +82,7 @@ userName: String, required: true, unique: true, maxlength: 20
 shop list
 
 shopList new Schema ({
-_id: , pets: [String], books: [String], potions: [String]
+_id: Name: [string],  Type: enum { Pet: [String], books: [String], potions: [String],
 })
   
 ## Links
