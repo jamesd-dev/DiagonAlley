@@ -71,6 +71,7 @@ renders potions store
 
 ## Models
 user model 
+
 new Schema ({
 _id: , 
 email: String, required: true, unique: true,
@@ -79,6 +80,7 @@ userName: String, required: true, unique: true, maxlength: 20
 }) 
 
 shop list
+
 shopList new Schema ({
 _id: , pets: [String], books: [String], potions: [String]
 })
