@@ -1,3 +1,5 @@
+MUST INCLUDE IN HEAD -> <script src="https://kit.fontawesome.com/69e6589eb5.js" crossorigin="anonymous"></script>
+
 PETS
 
 CAT - <i class="fas fa-cat"></i>
@@ -12,4 +14,8 @@ FISH - <i class="fas fa-fish"></i>
 PAW - <i class="fas fa-paw"></i>
 
 MAGICHAT - <i class="fas fa-hat-wizard"></i>
-
+CLOAKHOOD - <i class="fas fa-hood-cloak"></i>
+PLUS - <i class="fas fa-plus"></i>
+MINUS - <i class="fas fa-minus"></i>
+CROSS - <i class="fas fa-times"></i>
+FEATHER - <i class="fas fa-feather-alt"></i>
