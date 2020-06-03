@@ -28,22 +28,19 @@ what items you own
 ## ROUTES:
 GET /
 
-renders the homepage
-GET /auth/signup
+Render the login/signup page
+GET /signup
 
-redirects to / if user logged in
-renders the signup form (with flash msg)
-POST /auth/signup
 
-redirects to / if user logged in
-profile:
-username
-email
+redirects to /profile if user logged in
+renders the signup form 
+POST /signup
+
 password
 GET /auth/login
 
 redirects to / if user logged in
-renders the login form (with flash msg)
+renders the login form 
 POST /auth/login
 
 redirects to / if user logged in
