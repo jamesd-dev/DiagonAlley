@@ -26,27 +26,47 @@ what items you own
 
 ...
 ## ROUTES:
-GET /
+- GET /
+
 Render the login/signup page 
-GET /login
+
+- GET /login
+
 renders login page
 redirects to /profile if user is already logged in
-POST /login
+
+- POST /login
+
 if entered correctly password and user name, redirected to profile
-GET /signup
+
+- GET /signup
+
 renders to signup page
-POST /signup
+
+- POST /signup
+
 if entered correctly email, password and user name, redirected to acceptance letter
-GET /accepted
+
+- GET /accepted
+
 renders acceptance letter and have a button to go to /profile
-GET /profile
+
+- GET /profile
+
 renders user profile
-GET/profile/pets
+
+- GET/profile/pets
+
 renders pets store
-Extra:
+
+- Extra:
+
 GET/profile/books
+
 renders books store
+
 GET/profile/potions
+
 renders potions store
 
 ## Models
