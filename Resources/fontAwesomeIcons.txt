@@ -1,0 +1,15 @@
+PETS
+
+CAT - <i class="fas fa-cat"></i>
+OTTER - <i class="fas fa-otter"></i>
+HIPPO - <i class="fas fa-hippo"></i>
+SPIDER - <i class="fas fa-spider"></i>
+KIWIBIRD - <i class="fas fa-kiwi-bird"></i>
+FROG - <i class="fas fa-frog"></i>
+DRAGON - <i class="fas fa-dragon"></i>
+CROW - <i class="fas fa-crow"></i>
+FISH - <i class="fas fa-fish"></i>
+PAW - <i class="fas fa-paw"></i>
+
+MAGICHAT - <i class="fas fa-hat-wizard"></i>
+
