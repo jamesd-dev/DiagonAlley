@@ -75,8 +75,11 @@ user model
 new Schema ({
 _id: , 
 email: String, required: true, unique: true,
+
 password: String, minlength: 6, maxlength: 30,
+
 userName: String, required: true, unique: true, maxlength: 20 
+
 hogwartHouse: String, required: true
 }) 
 
