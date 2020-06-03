@@ -82,7 +82,7 @@ userName: String, required: true, unique: true, maxlength: 20
 
 shopList new Schema ({
 
-_id: icon: Image, enum ["cat", "dog, "hippo", "rat"] required: true, 
+_id: icon: enum ["cat", "dog, "hippo", "rat"] required: true, 
 
 name: [string], required: true, unique: true, 
 
