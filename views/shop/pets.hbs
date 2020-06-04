@@ -1,1 +1,16 @@
 <div>Pets store</div>
+  <form action="/profile/create" class="">
+    <button>Create your own</button>
+  </form>
+{{#each pets}}
+<p>{{this.icon}}</p>
+<p>Name: {{this.name}}</p>
+
+    <form method="POST" action="/profile/pets/{{this._id}}/add" >
+        <button type="submit" class="">+</button>
+    </form>
+
+    <form method="POST" action="/profile/pets/{{this._id}}/delete" >
+        <button type="submit" class="">-</button>
+    </form>
+{{/each}}
