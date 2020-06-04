@@ -63,4 +63,15 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/', authRouter);
 
+// If store database is empty runs the seed file to fill database with the premade items
+const ShopModel = require('./models/Shop.model');
+ShopModel.find({})
+.then((response) => {
+  if(response.length <= 0) {
+    console.log('database is empty');
+    console.log('populating shop database with seed.js');
+    require('./bin/seeds.js');
+  }
+});
+
 module.exports = app;
