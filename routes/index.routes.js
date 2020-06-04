@@ -3,7 +3,7 @@ const router = express.Router();
 
 /* GET home page */
 router.get('/', (req, res) => {
-  res.render('auth/home.hbs');
+  res.render('auth/home.hbs', {layout: false});
 });
 router.get('/profile/books', (req, res) => {
   res.render('shop/books.hbs');

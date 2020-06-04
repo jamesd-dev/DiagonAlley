@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const UserModel = require('../models/User.model');
 
 router.get('/signup', (req, res) => {
-    res.render('auth/signup.hbs');
+    res.render('auth/signup.hbs', {layout: false});
 });
 
 router.post('/signup', (req, res) => {
@@ -15,7 +15,8 @@ router.post('/signup', (req, res) => {
           .render('auth/signup.hbs', {
             errorMessage: 'Please enter username, email and password',
             username,
-            email
+            email,
+            layout: false
           });
         return;  
     }
@@ -26,7 +27,8 @@ router.post('/signup', (req, res) => {
           .render('auth/signup.hbs', {
             errorMessage: 'Email format not correct',
             username,
-            email
+            email,
+            layout: false
           });
         return;  
     }
@@ -37,7 +39,8 @@ router.post('/signup', (req, res) => {
           .render('auth/signup.hbs', {
             errorMessage: 'Password needs to have 8 characters, a number and an Uppercase alphabet',
             username,
-            email
+            email,
+            layout: false
           });
         return;  
     }
@@ -57,7 +60,8 @@ router.post('/signup', (req, res) => {
                   .render('auth/signup.hbs', {
                     errorMessage: 'username or email entered already exists!',
                     username,
-                    email
+                    email,
+                    layout: false
                   });
                   return;  
                 } 
@@ -66,7 +70,8 @@ router.post('/signup', (req, res) => {
                   .render('auth/signup.hbs', {
                     errorMessage: 'Something went wrong! Go to sleep!',
                     username,
-                    email
+                    email,
+                    layout: false
                   });
                   return; 
                 }
@@ -77,7 +82,7 @@ router.post('/signup', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  res.render('auth/login.hbs');
+  res.render('auth/login.hbs', {layout: false});
 });
 
 
@@ -86,7 +91,8 @@ router.post('/login', (req, res) => {
   if ( !email || !password) {
     res.status(500)
       .render('auth/signup.hbs', {
-        errorMessage: 'Please enter username, email and password'
+        errorMessage: 'Please enter username, email and password',
+        layout: false
       });
     return;  
   }
@@ -94,7 +100,8 @@ router.post('/login', (req, res) => {
   if (!myRegex.test(email)) {
     res.status(500)
         .render('auth/signup.hbs', {
-          errorMessage: 'Email format not correct'
+          errorMessage: 'Email format not correct',
+          layout: false
         });
       return;  
   }
@@ -117,7 +124,8 @@ router.post('/login', (req, res) => {
               else {
                 res.status(500)
                   .render('auth/login.hbs', {
-                    errorMessage: 'Passwords don\'t match'
+                    errorMessage: 'Passwords don\'t match',
+                    layout: false
                   });
                 return; 
               }
@@ -125,7 +133,8 @@ router.post('/login', (req, res) => {
           .catch(() => {
             res.status(500)
             .render('auth/login.hbs', {
-              errorMessage: 'Something wen\'t wrong!'
+              errorMessage: 'Something wen\'t wrong!',
+              layout: false
             });
             return; 
           });
@@ -134,7 +143,8 @@ router.post('/login', (req, res) => {
     .catch(() => {
       res.status(500)
         .render('auth/login.hbs', {
-          errorMessage: 'Something went wrong'
+          errorMessage: 'Something went wrong',
+          layout: false
         });
       return;  
     });
