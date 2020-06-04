@@ -4,7 +4,11 @@ const bcrypt = require('bcryptjs');
 const UserModel = require('../models/User.model');
 
 router.get('/signup', (req, res) => {
-    res.render('auth/signup.hbs', {layout: false});
+    if(!req.session.loggedInUser) {
+      res.render('auth/signup.hbs', {layout: false});
+    } else {
+      res.redirect('/profile');
+    }
 });
 
 router.post('/signup', (req, res) => {
@@ -57,7 +61,7 @@ router.post('/signup', (req, res) => {
                   req.session.loggedInUser = userData;
                   res.redirect('/profile');
                 });
-              })
+              }) 
               .catch((err) => {
                 if (err.code === 11000) {
                   res.status(500)
@@ -86,7 +90,11 @@ router.post('/signup', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  res.render('auth/login.hbs', {layout: false});
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    res.redirect('/profile');
+  }
 });
 
 

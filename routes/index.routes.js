@@ -4,7 +4,11 @@ const ShopModel = require('../models/Shop.model');
 
 /* GET home page */
 router.get('/', (req, res) => {
-  res.render('auth/home.hbs', {layout: false});
+  if(!req.session.loggedInUser) {
+    res.render('auth/home.hbs', {layout: false});
+  } else {
+    res.redirect('/profile');
+  }
 });
 router.get('/profile/books', (req, res) => {
   res.render('shop/books.hbs');
