@@ -4,12 +4,12 @@ const userSchema = new Schema(
   {
      username: {
        type: String,
-       required: [true, 'Please enter username'],
+       required: true,
        unique: true
      }, 
      email: {
       type: String,
-      required: [true, 'Please enter email'],
+      required: true,
       unique: true
     },
      passwordHash: {
@@ -19,7 +19,7 @@ const userSchema = new Schema(
       hogwartsHouse: {
         type: String,
         enum : ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff', 'Unsorted'],
-        required: [true, 'Please assign house']
+        required: true
       }
   },
   {

@@ -50,9 +50,13 @@ router.post('/signup', (req, res) => {
         console.log('Salt: ', salt);
         bcrypt.hash(password, salt)
           .then((passwordHash) => {
-            UserModel.create({email, username, passwordHash, hogwartsHouse: 'Unsorted'})
+            UserModel.create({username, email, passwordHash, hogwartsHouse: 'Unsorted'})
               .then(() => {
-                res.redirect('/profile');
+                UserModel.findOne({username})
+                .then((userData) => {
+                  req.session.loggedInUser = userData;
+                  res.redirect('/profile');
+                });
               })
               .catch((err) => {
                 if (err.code === 11000) {
@@ -87,27 +91,18 @@ router.get('/login', (req, res) => {
 
 
 router.post('/login', (req, res) => {
-  const {email, password } = req.body;
-  if ( !email || !password) {
+  const {username, password } = req.body;
+  if ( !username || !password) {
     res.status(500)
       .render('auth/signup.hbs', {
-        errorMessage: 'Please enter username, email and password',
+        errorMessage: 'Please enter username and password',
         layout: false
       });
     return;  
   }
-  const myRegex = new RegExp(/^[a-z0-9](?!.*?[^\na-z0-9]{2})[^\s@]+@[^\s@]+\.[^\s@]+[a-z0-9]$/);
-  if (!myRegex.test(email)) {
-    res.status(500)
-        .render('auth/signup.hbs', {
-          errorMessage: 'Email format not correct',
-          layout: false
-        });
-      return;  
-  }
 
   // Find if the user exists in the database 
-  UserModel.findOne({email})
+  UserModel.findOne({username})
     .then((userData) => {
          //check if passwords match
         bcrypt.compare(password, userData.passwordHash)
@@ -115,9 +110,7 @@ router.post('/login', (req, res) => {
               //if it matches
               if (doesItMatch) {
                 // req.session is the special object that is available to you
-                
                 req.session.loggedInUser = userData;
-                //req.session.greet = 'Hola';
                 res.redirect('/profile');
               }
               //if passwords do not match
