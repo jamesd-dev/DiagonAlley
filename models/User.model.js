@@ -6,7 +6,6 @@ const userSchema = new Schema(
        type: String,
        required: [true, 'Please enter username'],
        unique: [true, 'Please use a unique username'],
-       maxlength: 20
      }, 
      email: {
       type: String,
@@ -16,8 +15,6 @@ const userSchema = new Schema(
      passwordHash: {
       type: String,
       required: true,
-      minlength: 6,
-      maxlength: 30
     },
       hogwartsHouse: {
         type: String,
