@@ -1,1 +1,30 @@
 <div>Create page</div>
+<div class=''>
+    <form method="POST" action="/profile/create" >
+        <div class="">
+            <label>Icon</label>
+            <input type="file" name="icon" class="">
+        </div>
+        <div class="">
+            <label>Name</label>
+            <input type="text" name="name" class="" placeholder="Fluffy">
+        </div>
+        <div class="">
+            <label>Description</label>
+            <input type="text" name="description" class="" placeholder="Controls fire">
+        </div>
+        <div class="">
+            <label>Item Type</label>
+            <select name="itemType">
+              <option>pet</option>
+              <option>wand</option>
+              <option>book</option>
+              <option>potion</option>
+            </select>
+        </div>
+         <div class="">
+            <label>Author</label>
+            <input type="text" name="author" class="" placeholder="Jack">
+        </div>
+        <button type="submit" class="">Create</button>
+    </form>
