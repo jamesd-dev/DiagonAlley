@@ -41,7 +41,7 @@ router.post('/signup', (req, res) => {
     if (!myPassRegex.test(password)) {
       res.status(500)
           .render('auth/signup.hbs', {
-            errorMessage: 'Password needs to have 8 characters, a number and an Uppercase alphabet',
+            errorMessage: 'Password needs to have 8 characters',
             username,
             email,
             layout: false
@@ -64,12 +64,24 @@ router.post('/signup', (req, res) => {
               }) 
               .catch((err) => {
                 if (err.code === 11000) {
-                  res.status(500)
-                  .render('auth/signup.hbs', {
-                    errorMessage: 'username or email entered already exists!',
-                    username,
-                    email,
-                    layout: false
+                  let errorStr = 'username or email entered already exists!';
+                  let usernamePromise = UserModel.find({username})
+                  .then(() => {
+                    errorStr = 'that username is already taken!';
+                  });
+                  let emailPromise = UserModel.find({email})
+                  .then(() => {
+                    errorStr = 'that email is already in use!';
+                  });
+                  Promise.all([usernamePromise, emailPromise])
+                  .then(() => {
+                    res.status(500)
+                    .render('auth/signup.hbs', {
+                      errorMessage: errorStr,
+                      username,
+                      email,
+                      layout: false
+                    }); 
                   });
                   return;  
                 } 
@@ -144,7 +156,7 @@ router.post('/login', (req, res) => {
     .catch(() => {
       res.status(500)
         .render('auth/login.hbs', {
-          errorMessage: 'Something went wrong',
+          errorMessage: 'user does not exist',
           layout: false
         });
       return;  
