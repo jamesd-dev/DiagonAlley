@@ -19,3 +19,4 @@ PLUS - <i class="fas fa-plus"></i>
 MINUS - <i class="fas fa-minus"></i>
 CROSS - <i class="fas fa-times"></i>
 FEATHER - <i class="fas fa-feather-alt"></i>
+
