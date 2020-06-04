@@ -40,4 +40,17 @@ router.get('/profile/create', (req, res) => {
   res.render('shop/create.hbs');
 });
 
+router.post('/profile/create', (req, res, next) => {
+  // Iteration #3: Add a new drone
+  const {icon, name, description, itemType, author} = req.body;
+
+  ShopModel.create({icon, name, description, itemType, author})
+  .then((response) => {
+      res.redirect('/profile/pets');
+  })
+  .catch (() => {
+      res.send('something went wrong');
+  });
+});
+
 module.exports = router;
