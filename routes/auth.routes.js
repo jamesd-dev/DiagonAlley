@@ -9,13 +9,13 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', (req, res) => {
     const {username, email, password } = req.body;
-    console.log(username, email, password);
-
     
     if (!username || !email || !password) {
         res.status(500)
           .render('auth/signup.hbs', {
-            errorMessage: 'Please enter username, email and password'
+            errorMessage: 'Please enter username, email and password',
+            username,
+            email
           });
         return;  
     }
@@ -24,16 +24,20 @@ router.post('/signup', (req, res) => {
     if (!myRegex.test(email)) {
       res.status(500)
           .render('auth/signup.hbs', {
-            errorMessage: 'Email format not correct'
+            errorMessage: 'Email format not correct',
+            username,
+            email
           });
         return;  
     }
 
-    const myPassRegex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/);
+    const myPassRegex = new RegExp(/^[\s\S]{8,}/);
     if (!myPassRegex.test(password)) {
       res.status(500)
           .render('auth/signup.hbs', {
-            errorMessage: 'Password needs to have 8 characters, a number and an Uppercase alphabet'
+            errorMessage: 'Password needs to have 8 characters, a number and an Uppercase alphabet',
+            username,
+            email
           });
         return;  
     }
@@ -43,7 +47,7 @@ router.post('/signup', (req, res) => {
         console.log('Salt: ', salt);
         bcrypt.hash(password, salt)
           .then((passwordHash) => {
-            UserModel.create({email, username, passwordHash})
+            UserModel.create({email, username, passwordHash, hogwartsHouse: 'Unsorted'})
               .then(() => {
                 res.redirect('/profile');
               })
@@ -51,14 +55,18 @@ router.post('/signup', (req, res) => {
                 if (err.code === 11000) {
                   res.status(500)
                   .render('auth/signup.hbs', {
-                    errorMessage: 'username or email entered already exists!'
+                    errorMessage: 'username or email entered already exists!',
+                    username,
+                    email
                   });
                   return;  
                 } 
                 else {
                   res.status(500)
                   .render('auth/signup.hbs', {
-                    errorMessage: 'Something went wrong! Go to sleep!'
+                    errorMessage: 'Something went wrong! Go to sleep!',
+                    username,
+                    email
                   });
                   return; 
                 }
