@@ -43,7 +43,7 @@ router.post('/signup', (req, res) => {
         console.log('Salt: ', salt);
         bcrypt.hash(password, salt)
           .then((passwordHash) => {
-            UserModel.create({email, username, passwordHash})
+            UserModel.create({email, username, passwordHash, hogwartsHouse: 'Unsorted'})
               .then(() => {
                 res.redirect('/profile');
               })
