@@ -88,7 +88,7 @@ hogwartsHouse: required: true type: String,
 
 shopList new Schema ({
 
-_id: icon: String, enum ["cat", "hat", "wand", "dog", "hippo", "rat"] required: true, 
+_id: icon: String, required: true, 
 
 name: [string], required: true, unique: true, 
 
