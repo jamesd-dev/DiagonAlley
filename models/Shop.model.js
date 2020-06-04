@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const shopSchema = new Schema(
+let shopSchema = new Schema(
   {
     icon: {
       type: String,
