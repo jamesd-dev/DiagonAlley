@@ -1,4 +1,4 @@
-MUST INCLUDE IN HEAD -> <script src="https://kit.fontawesome.com/69e6589eb5.js" crossorigin="anonymous"></script>
+MUST INCLUDE IN HEAD -> s
 
 PETS
 
