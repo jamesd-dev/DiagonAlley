@@ -33,5 +33,18 @@
     "eslint-plugin-promise": "^4.2.1",
     "nodemon": "^2.0.1",
     "prettier": "^1.19.1"
-  }
+  },
+  "description": "Shopping app for the ambitious young wizard or witch",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polymurph13/DiagonAlley.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/polymurph13/DiagonAlley/issues"
+  },
+  "homepage": "https://github.com/polymurph13/DiagonAlley#readme"
 }
