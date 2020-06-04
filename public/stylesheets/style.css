@@ -1,7 +1,29 @@
+:root {
+  font-size: 20px;
+}
+
 body {
-  padding: 50px;
+  margin: 0;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
+
+.main {
+  margin-left: 4rem;
+  padding-left: .25rem;
+}
+
+#icon {
+  color: black;
+}
+
+.navbar {
+  width: 4rem; 
+  height: 100vh;
+  position: fixed;
+  background-color: black;
+}
+
+
 
 a {
   color: #00b7ff;
@@ -69,7 +91,7 @@ ul {
   list-style-type: none;
 }
 
-ul li {
+/* ul li {
   line-height: 20px;
 }
 
@@ -81,7 +103,7 @@ ul li {
 #to-right span {
   color: #43a3e6;
   font-size: 1.5em;
-}
+} */
 
 #form h2 {
   display: flex;
