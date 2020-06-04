@@ -29,14 +29,14 @@ router.post('/signup', (req, res) => {
         return;  
     }
 
-    const myPassRegex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/);
-    if (!myPassRegex.test(password)) {
-      res.status(500)
-          .render('auth/signup.hbs', {
-            errorMessage: 'Password needs to have 8 characters, a number and an Uppercase alphabet'
-          });
-        return;  
-    }
+    // const myPassRegex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/);
+    // if (!myPassRegex.test(password)) {
+    //   res.status(500)
+    //       .render('auth/signup.hbs', {
+    //         errorMessage: 'Password needs to have 8 characters, a number and an Uppercase alphabet'
+    //       });
+    //     return;  
+    // }
 
     bcrypt.genSalt(12)
       .then((salt) => {
