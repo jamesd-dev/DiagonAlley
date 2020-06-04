@@ -11,6 +11,11 @@ let shopSchema = new Schema(
       required: [true, 'Must include a name'],
       unique: true
     },
+    description: {
+      type: String,
+      required: [true, 'Must include a description'],
+      unique: true
+    },
     itemType: {
       type: String,
       enum: ['pet', 'book', 'wand', 'potions'],

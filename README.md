@@ -92,7 +92,9 @@ _id: icon: String, required: true,
 
 name: [string], required: true, unique: true, 
 
-itemType: enum [ "pet", "books", "potions"], required:true , 
+description: String, required: true, unique: true,
+
+itemType: enum [ "pet", "books", "potions"], required:true, 
 
 author: type: String })
   

@@ -1,0 +1,65 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+#home-page-panel {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(5, 5, 5, 1);
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+#home-page-panel .brick {
+  background-color: gray;
+  width: 100%;
+  margin: 0.5rem 0.5rem;
+  flex: 1 0 25%;
+  align-self: stretch;
+  background: rgb(0,0,0);
+  background: linear-gradient(42deg, rgba(0,0,0,1) 0%, rgba(10,10,10,1) 100%);
+  box-shadow: 0px 0px 4px 5px rgba(0,0,0,1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+#home-page-panel .brick:nth-child(2n) {
+  flex: 3 0 25%;
+} 
+#home-page-panel .brick:nth-child(3n) {
+  flex: 0.5 0 25%;
+  background: rgb(4, 4, 4);
+  background: linear-gradient(42deg, rgba(4, 4, 4,1) 0%, rgba(0,0,0,1) 100%);
+} 
+#home-page-panel .brick:nth-child(5n) {
+  flex: 0.7 0 25%;
+  background: rgb(4, 4, 4);
+  background: linear-gradient(42deg, rgba(4, 4, 4,1) 0%, rgba(0,0,0,1) 100%);
+} 
+#home-page-panel .brick:nth-child(7n) {
+  flex: 3 0 25%;
+  box-shadow: inset 0px 0px 4px 5px rgba(0,0,0,1);
+} 
+#home-page-panel .brick:nth-child(11n) {
+  flex: 0.5 0 25%;
+}
+
+#home-page-panel a {
+  text-decoration: none;
+  color: rgba(40, 40, 40,1);
+}
+
+#home-page-panel a:hover {
+  text-decoration: none;
+  color: rgba(100, 100, 100,1);
+}

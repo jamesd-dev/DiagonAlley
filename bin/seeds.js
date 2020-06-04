@@ -6,61 +6,61 @@ let pets = [{
   icon: '',
   name: 'Otter',
   itemType: 'pet',
-  author: ''
+  description: 'The most ferocious kind of underwater cat, likes fish, cuddles and the blood of the innocent'
 },
 {
   icon: '',
   name: 'Hippo',
   itemType: 'pet',
-  author: ''
+  description: 'It\'s just a fat, wet dog, they\'ll be sure to let you keep it.'
 },
 {
   icon: '',
   name: 'Cat',
   itemType: 'pet',
-  author: ''
+  description: 'Essentially an abusive relationship with fur'
 },
 {
   icon: '',
   name: 'Spider',
   itemType: 'pet',
-  author: ''
+  description: 'Ew, gross. Dem legs tho...'
 },
 {
   icon: '',
   name: 'Kiwi Bird',
   itemType: 'pet',
-  author: ''
+  description: 'Not a kiwi, not really a bird either. It\'s an existential crisis with a beak'
 },
 {
   icon: '',
   name: 'Frog',
   itemType: 'pet',
-  author: ''
+  description: 'Solidify your reputation as a loser, be the king/queen of the bullied kids with your very own frog'
 },
 {
   icon: '',
   name: 'Dragon',
   itemType: 'pet',
-  author: ''
+  description: 'Definitely not allowed. Do it.'
 },
 {
   icon: '',
   name: 'Crow',
   itemType: 'pet',
-  author: ''
+  description: 'Excellent for cleaning up all of that pesky carrion left over from slaying your enemies'
 },
 {
   icon: '',
   name: 'Fish',
   itemType: 'pet',
-  author: ''
+  description: 'It\'s looking for it\'s dad'
 },
 {
   icon: '',
   name: 'Dog',
   itemType: 'pet',
-  author: ''
+  description: 'Like a cat, except it actually likes you'
 }];
 
 let dataBase = ShopModel.create(pets)
