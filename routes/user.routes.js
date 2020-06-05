@@ -4,7 +4,11 @@ const ShopModel = require('../models/Shop.model');
 const UserModel = require('../models/User.model');
 
 router.get('/accept', (req, res) => {
-  res.render('auth/accept.hbs');
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    res.render('auth/accept.hbs');
+  }
 });
 
 router.get('/profile', (req, res) => {
