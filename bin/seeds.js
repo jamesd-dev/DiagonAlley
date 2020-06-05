@@ -199,7 +199,7 @@ let cloaks = [{
 }];
 
 
-let dataBase = ShopModel.create(pets)
+ShopModel.create(pets)
 .then((response) => {
   console.log('populated pets database');
 })
@@ -207,7 +207,7 @@ let dataBase = ShopModel.create(pets)
   console.log('something went wrong: pets', response);
 });
 
-let dataBase = ShopModel.create(books)
+ShopModel.create(books)
 .then((response) => {
   console.log('populated books database');
 })
@@ -215,7 +215,7 @@ let dataBase = ShopModel.create(books)
   console.log('something went wrong: books', response);
 });
 
-let dataBase = ShopModel.create(potions)
+ShopModel.create(potions)
 .then((response) => {
   console.log('populated potions database');
 })
@@ -223,7 +223,7 @@ let dataBase = ShopModel.create(potions)
   console.log('something went wrong: potions ', response);
 });
 
-let dataBase = ShopModel.create(cloaks)
+ShopModel.create(cloaks)
 .then((response) => {
   console.log('populated potions database');
 })
