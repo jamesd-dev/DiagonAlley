@@ -11,22 +11,38 @@ router.get('/', (req, res) => {
   }
 });
 router.get('/profile/books', (req, res) => {
-  res.render('shop/books.hbs');
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    res.render('shop/books.hbs');
+  }
 });
 router.get('/profile/pets', (req, res) => {
-  ShopModel.find()
-  .then((pets) => {
-    res.render('shop/pets.hbs', {pets});
-  })
-  .catch(() => {
-    console.log('something went wrong');
-  });
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    ShopModel.find()
+    .then((pets) => {
+      res.render('shop/pets.hbs', {pets});
+    })
+    .catch(() => {
+      console.log('something went wrong');
+    });
+  }
 });
 router.get('/profile/potions', (req, res) => {
-  res.render('shop/potions.hbs');
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    res.render('shop/potions.hbs');
+  }
 });
 router.get('/profile/wands', (req, res) => {
-  res.render('shop/wands.hbs');
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    res.render('shop/wands.hbs');
+  }
 });
 
 router.post('/profile/pets/:id/delete', (req, res, next) => {
@@ -41,7 +57,11 @@ router.post('/profile/pets/:id/delete', (req, res, next) => {
 });
 
 router.get('/profile/create', (req, res) => {
-  res.render('shop/create.hbs');
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    res.render('shop/create.hbs');
+  }
 });
 
 router.post('/profile/create', (req, res, next) => {
@@ -58,7 +78,11 @@ router.post('/profile/create', (req, res, next) => {
 });
 
 router.get('/accept', (req, res) => {
-  res.render('users/accept.hbs');
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    res.render('users/accept.hbs', {userData: req.session.loggedInUser});
+  }
 });
 
 module.exports = router;
