@@ -122,3 +122,19 @@ body::-webkit-scrollbar-thumb {
   margin-top: 2rem;
   margin-bottom: 5rem;
 }
+
+.letter h1 {
+  text-align: center;
+}
+
+.letter h2 {
+  text-align: center;
+}
+
+.letter h3 {
+  text-align: center;
+}
+
+.letter ul {
+  list-style: none;
+}
