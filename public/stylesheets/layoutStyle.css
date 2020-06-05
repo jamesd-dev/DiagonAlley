@@ -13,7 +13,8 @@ body {
   margin: 0;
   padding: 0;
   color: black;
-  background-color: white
+  background-image: url('../images/brick-pattern-greyscale.png');
+  background-repeat: repeat;
 }
 
 body::-webkit-scrollbar {
@@ -29,37 +30,95 @@ body::-webkit-scrollbar-thumb {
 }
 
 .main-panel {
-  margin-left: 5rem;
-  padding: 1rem;
+  min-width: 200px;
+  max-width: 800px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 3rem 7rem;
+  margin: 0 auto;
+  background-color: white;
+  text-align: justify;
+  box-shadow: 0px 0px 5px 0.5rem rgba(0,0,0,0.8);
 }
+
+
+/* nav bar styling */
 
 .nav-bar {
   width: 5rem;
   height: 100vh;
   position: fixed;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
 }
 
 .navbar-nav {
+  position: fixed;
+  height: 100vh;
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   width: 5rem;
+  box-shadow: 3px 0px 5px 2px rgba(0,0,0,0.6);
 }
-
+.navbar-nav ul {
+  padding: 2rem 0;
+  margin: 0;
+}
 .navbar-nav li {
   list-style: none;
 }
 
-.navbar-nav .svg {
+.navbar-nav svg {
   fill: var(--hidden-color);
+  filter: grayscale(100%) opacity(0.7);
+  transition: .3s;
+}
+
+.nav-link + h6 {
+  color: var(--hidden-color);
+  filter: grayscale(100%) opacity(0.7);
+  transition: .3s;
+  text-align: center;
+  padding: 0.2rem 0 2rem 0;
+  margin: 0;
+}
+
+.nav-link:hover svg {
+  fill: var(--highlight-color);
+  filter: grayscale(0%) opacity(1);
+  transition: .3s;
+}
+
+.nav-link:hover + h6 {
+  color: var(--highlight-color);
+  filter: grayscale(0%) opacity(1);
+  transition: .3s;
 }
 
 .nav-item {
   width: 100%;
 }
 
+/* acceptance letter styling */
+
+.bacground-panel {
+  width: 100%;
+}
+
+.letter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter .letter-head-image {
+  width: 50%;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
