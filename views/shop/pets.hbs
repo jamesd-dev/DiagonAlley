@@ -3,7 +3,7 @@
     <button>Create your own</button>
   </form>
 {{#each pets}}
-<p>{{this.icon}}</p>
+<i class="{{this.icon}}"></i>
 <p>Name: {{this.name}}</p>
 
     <form method="POST" action="/profile/pets/{{this._id}}/add" >

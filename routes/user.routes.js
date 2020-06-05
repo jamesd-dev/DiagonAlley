@@ -13,9 +13,9 @@ router.get('/accept', (req, res) => {
 
 router.get('/profile', (req, res) => {
     // res.render('users/profile.hbs', {userData: req.session.loggedInUser});
-    ShopModel.find()
-    .then((pets) => {
-      res.render('users/profile.hbs', {pets});
+    UserModel.find()
+    .then((items) => {
+      res.render('users/profile.hbs', {items});
     })
     .catch(() => {
       console.log('something went wrong');

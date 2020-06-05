@@ -6,10 +6,8 @@
 
 {{/if}} --}}
 
-{{#each pets}}
-<p>{{this.icon}}</p>
-<p>Name: {{this.name}}</p>
-
+{{#each items}}
+<p>{{this.ownedItems}}</p>
     <form method="POST" action="/profile/{{this._id}}/delete" >
         <button type="submit" class="">-</button>
     </form>
