@@ -49,6 +49,10 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 
+.navbar-nav li {
+  list-style: none;
+}
+
 .nav-item {
   width: 100%;
 }

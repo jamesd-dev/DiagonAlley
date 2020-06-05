@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
 const userSchema = new Schema(
   {
@@ -20,7 +21,10 @@ const userSchema = new Schema(
         type: String,
         enum : ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff', 'Unsorted'],
         required: true
-      }
+      },
+    ownedItems: [{
+      type: mongoose.Schema.Types.ObjectId, ref: 'Shop'
+    }]
   },
   {
     timestamps: true
