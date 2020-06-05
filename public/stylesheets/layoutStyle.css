@@ -1,0 +1,55 @@
+:root {
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  --highlight-color: #ebebeb; /*Change to primary house colour later when sorted*/
+  --hidden-color: #292929;
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #000000;
+  
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: black;
+  background-color: white
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--bg-secondary);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--highlight-color);
+}
+
+.main-panel {
+  margin-left: 5rem;
+  padding: 1rem;
+}
+
+.nav-bar {
+  width: 5rem;
+  height: 100vh;
+  position: fixed;
+  background-color: var(--bg-primary);
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-item {
+  width: 100%;
+}
+

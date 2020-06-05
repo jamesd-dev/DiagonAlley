@@ -5,7 +5,7 @@
 
 body {
   margin: 0;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .main {
@@ -14,7 +14,7 @@ body {
 }
 
 #icon {
-  color: black;
+  color: white;
 }
 
 .navbar {
@@ -30,7 +30,7 @@ body {
   text-align: center;
 }
 
-h6 {
+.navitem h6 {
   margin-top: 10px;
   padding-top: 0;
   color: black;
@@ -46,7 +46,7 @@ h6 {
   align-items: center; 
 }
 
-svg {
+.navitem svg {
   fill: white;
   height: 2rem;
 }
@@ -171,3 +171,12 @@ ul li {
   font-weight: bold;
   font-size: 2em;
 } */
+
+
+/* accept letter */
+
+.background-panel {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}

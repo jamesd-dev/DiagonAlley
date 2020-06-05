@@ -20,9 +20,6 @@ let shopSchema = new Schema(
       type: String,
       enum: ['pet', 'book', 'wand', 'potions'],
       required: true
-    },
-    author: {
-      type: String
     }
   },
   {
