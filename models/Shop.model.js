@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
 let shopSchema = new Schema(
   {
@@ -20,7 +21,11 @@ let shopSchema = new Schema(
       type: String,
       enum: ['pet', 'book', 'wand', 'potions'],
       required: true
-    }
+    },
+    owners: [{
+      type: mongoose.Schema.Types.ObjectId, ref: 'User'
+    }],
+    owned: {type: Boolean} // whether the person viewing the item owns it. Gets updated as the item is processed to show
   },
   {
     timestamps: true

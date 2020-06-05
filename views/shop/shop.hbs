@@ -1,0 +1,23 @@
+<div class="shop-title-panel">
+  <h1 class="shop-title">{{name}}</h1>
+</div>
+
+<div class="shop-items-panel">
+  <ul class='shop-item-list'>
+  {{#each items}}
+    <li class="shop-item {{#if this.owned}}owned{{else}}unowned{{/if}}">
+      <i class="{{this.icon}}"></i>
+      <p>{{this.name}}</p>
+      {{#if this.owned}}
+        <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
+          <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i></button>
+        </form>
+      {{else}}
+        <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
+          <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
+        </form>
+      {{/if}}
+    </li>
+  {{/each}}
+  </ul>
+</div>

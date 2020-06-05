@@ -14,6 +14,7 @@ router.get('/accept', (req, res) => {
 router.get('/profile', (req, res) => {
     // res.render('users/profile.hbs', {userData: req.session.loggedInUser});
     UserModel.find()
+    .populate('ownedItems')
     .then((items) => {
       res.render('users/profile.hbs', {items});
     })
