@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ShopModel = require('../models/Shop.model');
+const UserModel = require('../models/User.model');
 
 /* GET home page */
 router.get('/', (req, res) => {
@@ -53,6 +54,18 @@ router.post('/profile/pets/:id/delete', (req, res, next) => {
   .catch(() => {
       res.send('something went wrong');
   });
+});
+
+router.post('/profile/pets/:id/add', (req, res, next) => {
+  let username = req.session.loggedInUser.username;
+  UserModel.findOneAndUpdate({username}, {$push: {ownedItems: [req.params.id]}})
+  .then(() => {
+    res.redirect('/profile/pets');
+  })
+  .catch(() => {
+    console.log('failed to add pet to profile');
+    res.redirect('/profile/pets');
+  })
 });
 
 router.get('/profile/create', (req, res) => {

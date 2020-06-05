@@ -47,10 +47,16 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--bg-primary);
+  width: 5rem;
 }
 
 .navbar-nav li {
   list-style: none;
+}
+
+.navbar-nav .svg {
+  fill: var(--hidden-color);
 }
 
 .nav-item {
