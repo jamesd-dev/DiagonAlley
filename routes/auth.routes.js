@@ -59,7 +59,7 @@ router.post('/signup', (req, res) => {
                 UserModel.findOne({username})
                 .then((userData) => {
                   req.session.loggedInUser = userData;
-                  res.redirect('/profile');
+                  res.redirect('/accept');
                 });
               }) 
               .catch((err) => {
@@ -164,12 +164,12 @@ router.post('/login', (req, res) => {
 
 });
 
-router.get('/accept', (req, res) => {
-  res.render('auth/accept.hbs');
-});
-
 router.get('/profile', (req, res) => {
-    res.render('users/profile.hbs', {userData: req.session.loggedInUser});
+    if(!req.session.loggedInUser) {
+      res.render('auth/login.hbs', {layout: false});
+    } else {
+      res.render('users/profile.hbs', {userData: req.session.loggedInUser});
+    }
 });
 
 module.exports = router;

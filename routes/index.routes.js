@@ -57,4 +57,8 @@ router.post('/profile/create', (req, res, next) => {
   });
 });
 
+router.get('/accept', (req, res) => {
+  res.render('users/accept.hbs');
+});
+
 module.exports = router;
