@@ -1,12 +1,12 @@
-<div>Create page</div>
+<div>{{this.name}}Create page</div>
 <div class=''>
-    <form method="POST" action="/profile/create" >
+    <form method="POST" action="/profile/create?:" >
         <div class="">
             <label>Icon</label>
             <input type="file" name="icon" class="">
         </div>
         <div class="">
-            <label>Name</label>
+            <label>{{this.name}}Name</label>
             <input type="text" name="name" class="" placeholder="Fluffy">
         </div>
         <div class="">
@@ -16,6 +16,7 @@
         <div class="">
             <label>Item Type</label>
             <select name="itemType">
+              <option>{{this.name}}</option>
               <option>pet</option>
               <option>wand</option>
               <option>book</option>
