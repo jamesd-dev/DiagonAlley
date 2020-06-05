@@ -1,4 +1,16 @@
 <div>Books store</div>
- <form action="/profile/create" class="">
+  <form action="/profile/create" class="">
     <button>Create your own</button>
   </form>
+{{#each books}}
+<i class="{{this.icon}}"></i>
+<p>Name: {{this.name}}</p>
+
+    <form method="POST" action="/profile/books/{{this._id}}/add" >
+        <button type="submit" class="">+</button>
+    </form>
+
+    <form method="POST" action="/profile/books/{{this._id}}/delete" >
+        <button type="submit" class="">-</button>
+    </form>
+{{/each}}
