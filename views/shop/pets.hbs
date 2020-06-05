@@ -1,3 +1,4 @@
+
 <div>Pets store</div>
   <form action="/profile/create" class="">
     <button>Create your own</button>
@@ -5,6 +6,7 @@
 {{#each pets}}
 <i class="{{this.icon}}"></i>
 <p>Name: {{this.name}}</p>
+<p>Description: {{this.description}}</p>
 
     <form method="POST" action="/profile/pets/{{this._id}}/add" >
         <button type="submit" class="">+</button>

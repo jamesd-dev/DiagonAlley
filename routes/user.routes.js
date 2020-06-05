@@ -12,8 +12,9 @@ router.get('/accept', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-    // res.render('users/profile.hbs', {userData: req.session.loggedInUser});
+
     UserModel.find()
+    .populate('ownedItems')
     .then((items) => {
       res.render('users/profile.hbs', {items});
     })
@@ -23,7 +24,7 @@ router.get('/profile', (req, res) => {
 });
 
 router.post('/profile/:id/delete', (req, res, next) => {
-  ShopModel.findByIdAndDelete(req.params.id)
+  UserModel.findByIdAndDelete(req.params.id)
   .then((response) => {
       res.redirect('/profile');
   })

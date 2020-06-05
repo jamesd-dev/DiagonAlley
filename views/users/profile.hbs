@@ -1,14 +1,14 @@
+<link rel="icon" href="../images/allhouses.png">
 <div>This is your profile page dude!!</div>
-{{!-- 
-{{#if userData}}
-
-<p>Hello {{userData.username}}</p>
-
-{{/if}} --}}
 
 {{#each items}}
-<p>{{this.ownedItems}}</p>
+{{#each this.ownedItems}}
+<i class="{{this.icon}}"></i>
+<p>Name: {{this.name}}</p>
+<p>Type: {{this.itemType}}</p>
+<p>Description: {{this.description}}</p>
     <form method="POST" action="/profile/{{this._id}}/delete" >
         <button type="submit" class="">-</button>
     </form>
+    {{/each}}
 {{/each}}
