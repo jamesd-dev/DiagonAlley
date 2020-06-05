@@ -164,12 +164,4 @@ router.post('/login', (req, res) => {
 
 });
 
-router.get('/accept', (req, res) => {
-  res.render('auth/accept.hbs');
-});
-
-router.get('/profile', (req, res) => {
-    res.render('users/profile.hbs', {userData: req.session.loggedInUser});
-});
-
 module.exports = router;

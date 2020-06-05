@@ -30,7 +30,6 @@ router.get('/profile/wands', (req, res) => {
 });
 
 router.post('/profile/pets/:id/delete', (req, res, next) => {
-  // Iteration #5: Delete the drone
   ShopModel.findByIdAndDelete(req.params.id)
   .then((response) => {
       res.redirect('/profile/pets');
@@ -45,10 +44,9 @@ router.get('/profile/create', (req, res) => {
 });
 
 router.post('/profile/create', (req, res, next) => {
-  // Iteration #3: Add a new drone
-  const {icon, name, description, itemType, author} = req.body;
+  const {icon, name, description, itemType} = req.body;
 
-  ShopModel.create({icon, name, description, itemType, author})
+  ShopModel.create({icon, name, description, itemType})
   .then((response) => {
       res.redirect('/profile/pets');
   })

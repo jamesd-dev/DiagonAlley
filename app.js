@@ -18,6 +18,7 @@ require('./configs/db.config');
 // Routers
 const indexRouter = require('./routes/index.routes');
 const authRouter = require('./routes/auth.routes');
+const userRouter = require('./routes/user.routes');
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.use(cookieParser());
 // Routes middleware
 app.use('/', indexRouter);
 app.use('/', authRouter);
+app.use('/', userRouter);
 
 // If store database is empty runs the seed file to fill database with the premade items
 const ShopModel = require('./models/Shop.model');
