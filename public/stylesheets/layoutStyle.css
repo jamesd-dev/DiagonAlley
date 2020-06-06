@@ -199,10 +199,11 @@ body::-webkit-scrollbar-thumb {
   background-color: #000000;
 }
 
-.shop-items-panel li {
+.shop-items-panel .shop-item {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  height: 3rem;
   color: white;
   border-bottom: 1px solid var(--bg-secondary);
   box-sizing: border-box;
@@ -220,8 +221,37 @@ body::-webkit-scrollbar-thumb {
   justify-self: flex-end;
 }
 
-.shop-item {
-  height: 3rem;
+.shop-items-panel li {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.shop-items-panel .desc-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-items-panel li + .desc-panel {
+  transition: .3s;
+  visibility: visible;
+  font-size: 0rem;
+}
+
+.shop-items-panel li:hover + .desc-panel{
+  transition: .3s;
+  font-size: 1rem;
+}
+
+.shop-items-panel .desc-panel p{
+  height: 100%;
+  color: var(--hidden-color);
+  text-align: center;
+  padding-right: 6rem;
+  padding-left: 3rem;
+  line-height: 1.5rem;
 }
 
 .shop-item .button-panel {
@@ -230,6 +260,10 @@ body::-webkit-scrollbar-thumb {
   margin: 0;
   padding: 0;
   width: 5rem;
+}
+
+.shop-item p {
+  color: white;
 }
 
 
@@ -243,6 +277,7 @@ body::-webkit-scrollbar-thumb {
   outline: none;
   color: white;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .shop-item .button-panel button:active {
