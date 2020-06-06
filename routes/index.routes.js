@@ -105,10 +105,9 @@ router.get('/shop/:shopType', (req, res) => {
     ShopModel.find({itemType: shopType})
     .then((items) => {
       // sets owned property to true on item if this user already has it
-      let toggledItems = items.map((item) => {
+      const toggledItems = items.map((item) => {
         if(item.owners.includes(userId)) {
           item.owned = true;
-          console.log(item.name, ' is owned!');
         } else {
           item.owned = false;
         }
@@ -204,6 +203,14 @@ router.post('/shop/:shopType/create', (req, res, next) => {
     res.redirect(`/shop/${req.params.shopType}/create`);
     console.log('failed to create new item: ', response);
   });
+});
+
+router.get('/sorting-hat', (req, res) => {
+  if (!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+    res.render('users/sorting-hat.hbs');
+  }
 });
 
 module.exports = router;

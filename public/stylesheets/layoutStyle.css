@@ -143,7 +143,7 @@ body::-webkit-scrollbar-thumb {
 
 /* shop styles */
 
-.shop-title-panel {
+.title-panel {
   background-color: var(--bg-primary);
   position: fixed;
   top: 0;
@@ -157,7 +157,7 @@ body::-webkit-scrollbar-thumb {
   min-width: 600px;
 }
 
-.shop-title-panel .shop-title {
+.title-panel .title {
   color: var(--hidden-color);
   font-size: 2rem;
   transform: translateX(-5rem);
@@ -205,8 +205,11 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   height: 3rem;
   color: white;
-  border-bottom: 1px solid var(--bg-secondary);
   box-sizing: border-box;
+}
+
+.create-shop-item {
+  border-bottom: 1px solid var(--bg-secondary);
 }
 
 .shop-items-panel li form {
@@ -232,19 +235,25 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid var(--bg-secondary);
 }
 
-.shop-items-panel li + .desc-panel p{
+.shop-items-panel li + .desc-panel p {
+  color: var(--bg-secondary);
+  filter: grayscale(100%) opacity(0.7);
   transition: .3s;
+  text-align: center;
+  padding: 0 6rem 0 3rem;
+  visibility: hidden;
+  margin: 0;
+}
+
+.shop-items-panel li:hover + .desc-panel p {
+  color: var(--highlight-color);
+  filter: grayscale(0%) opacity(1);
+  transition: .3s;
+  padding: 1rem 6rem 1rem 3rem;
   visibility: visible;
-  font-size: 0;
-  line-height: 0;
-}
-
-.shop-items-panel li:hover + .desc-panel p{
-  transition: .3s;
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .shop-items-panel .desc-panel p{
@@ -284,9 +293,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .shop-item .button-panel button:active {
-  background-color: var(--highlight-color);
-  border: none;
-  outline: none;
+  color: var(--hidden-color);
 }
 
 .shop-item .button-panel a {
@@ -342,3 +349,9 @@ body::-webkit-scrollbar-thumb {
 
 
 /* shop create styles */
+
+/* sorting hat styles */
+
+#sorting-main-panel {
+  background-color: var(--bg-primary);
+}
