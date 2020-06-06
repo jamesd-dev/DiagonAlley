@@ -234,15 +234,17 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
 }
 
-.shop-items-panel li + .desc-panel {
+.shop-items-panel li + .desc-panel p{
   transition: .3s;
   visibility: visible;
-  font-size: 0rem;
+  font-size: 0;
+  line-height: 0;
 }
 
-.shop-items-panel li:hover + .desc-panel{
+.shop-items-panel li:hover + .desc-panel p{
   transition: .3s;
   font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .shop-items-panel .desc-panel p{
@@ -252,6 +254,7 @@ body::-webkit-scrollbar-thumb {
   padding-right: 6rem;
   padding-left: 3rem;
   line-height: 1.5rem;
+  overflow: auto;
 }
 
 .shop-item .button-panel {
@@ -305,6 +308,10 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--owned-color);
 }
 
+.owned + .desc-panel, .owned + .desc-panel p {
+  background-color: var(--owned-color);
+}
+
 .owned .button-panel button {
   width: 100%;
   height: 100%;
@@ -315,6 +322,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 .unowned {
+  background-color: var(--bg-primary);
+}
+
+.unowned + .desc-panel, .unowned + .desc-panel p {
   background-color: var(--bg-primary);
 }
 
