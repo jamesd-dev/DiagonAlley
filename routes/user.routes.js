@@ -23,14 +23,25 @@ router.get('/profile', (req, res) => {
     });
 });
 
-router.post('/profile/:id/delete', (req, res, next) => {
-  UserModel.findByIdAndDelete(req.params.id)
-  .then((response) => {
-      res.redirect('/profile');
+router.post('/profile/:itemId/delete', (req, res, next) => {
+  const userId = req.session.loggedInUser._id;
+  const itemId = req.params.itemId;
+  UserModel.updateOne({_id: userId}, {$pullAll: {ownedItems: [{_id: req.params.itemId}]}})
+  .then(() => {
+    ShopModel.updateOne({_id: itemId}, {$pullAll: {owners: [{_id: userId}]}})
+    .then(() => {
+      console.log('deleted');
+      res.redirect(`/profile`);
+    })
+    .catch(() => {
+      console.log('failed to remove owner from object');
+      res.redirect(`/profile`);
+    });
   })
-  .catch(() => {
-      res.send('something went wrong');
-  });
+  .catch((r) => {
+    console.log('failed to remove item from profile', r);
+    res.redirect(`/profile`);
+  })
 });
 
 module.exports = router;
