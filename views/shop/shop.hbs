@@ -10,7 +10,7 @@
       <p>{{this.name}}</p>
       {{#if this.owned}}
         <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
-          <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i></button>
+          <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus shop-button shop-delete-button"></i></button>
         </form>
       {{else}}
         <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
