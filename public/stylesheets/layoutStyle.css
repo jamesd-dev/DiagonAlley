@@ -212,121 +212,80 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  height: 3rem;
   color: white;
-}
-
-.create-shop-item {
   border-bottom: 1px solid var(--bg-secondary);
-  padding-bottom: 2rem;
-  padding-top: 1rem;
 }
 
-.shop-items-panel li form {
-  height: 100%;
-  width: 100%;
-  border: none;
+.shop-items-panel .shop-item .name-panel p {
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.shop-items-panel .shop-item .desc-panel p {
+  transition: .3s;
+  visibility: hidden;
+  top: 0;
+  color: var(--bg-primary);
   padding: 0;
   margin: 0;
-	font: inherit;
-	cursor: pointer;
-  outline: none;
-  justify-self: flex-end;
+  line-height: 0;
 }
 
-.shop-items-panel li {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-}
-
-.shop-items-panel .desc-panel {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid var(--bg-secondary);
-}
-
-.shop-items-panel li + .desc-panel p {
-  color: var(--bg-secondary);
-  filter: grayscale(100%) opacity(0.7);
+.shop-items-panel .shop-item:hover .desc-panel p {
   transition: .3s;
-  text-align: center;
-  padding: 0 6rem 0 3rem;
-  visibility: hidden;
-  margin: 0;
-}
-
-.shop-items-panel li:hover + .desc-panel p {
-  color: var(--highlight-color);
-  filter: grayscale(0%) opacity(1);
-  transition: .3s;
-  padding: 1rem 6rem 1rem 3rem;
+  padding: .5rem 0 2rem 0;
   visibility: visible;
+  color: var(--hidden-color);
+  line-height: 1.5rem;
 }
 
-.shop-items-panel .desc-panel p{
-  height: 100%;
-  color: var(--hidden-color);
+.shop-item .item-text-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
   text-align: center;
-  padding-right: 6rem;
-  padding-left: 3rem;
-  line-height: 1.5rem;
-  overflow: auto;
+}
+
+.shop-item form {
+  width: 100%;
+  height: 100%;
+}
+
+.shop-item .icon-panel {
+  justify-self: flex-start;
+  width: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
 }
 
 .shop-item .button-panel {
-  background-color: var(--hidden-color);
-  border: 0;
-  margin: 0;
-  padding: 0;
-  width: 5rem;
+  justify-self: flex-start;
+  width: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
 }
 
-.shop-item p {
-  color: white;
-}
-
-
-.shop-item .button-panel button {
-  width: 100%;
-  height: 100%;
-  background-color: var(--owned-color);
-  border: 0;
-  margin: 0;
-  padding: 0;
+.shop-item .button-panel .shop-button {
   outline: none;
+  border: none;
+}
+
+.shop-item .button-panel .shop-button i {
+  font-size: 1rem;
+}
+
+.shop-item .button-panel .shop-button:active {
+  outline: none;
+  border: none;
+}
+
+.shop-item .button-panel i {
   color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.shop-item .button-panel button:active {
-  color: var(--hidden-color);
-}
-
-.shop-item .button-panel a {
-  width: 100%;
-  height: 100%;
-}
-
-.shop-item p {
-  width: 100%;
-  text-align: center;
-}
-
-.shop-item i {
-  color: white;
-  margin: auto;
-}
-
-.owned {
-  background-color: var(--owned-color);
-}
-
-.owned + .desc-panel, .owned + .desc-panel p {
-  background-color: var(--owned-color);
 }
 
 .owned .button-panel button {
@@ -336,6 +295,14 @@ body::-webkit-scrollbar-thumb {
   border: 0;
   margin: 0;
   padding: 0;
+}
+
+.owned .item-text-panel {
+  background-color: var(--owned-color);
+}
+
+.owned .icon-panel {
+  background-color: var(--owned-color);
 }
 
 .unowned {

@@ -10,38 +10,65 @@
 
 <div class="shop-items-panel main-panel">
   <ul class='shop-item-list'>
-    <li class="shop-item unowned create-shop-item">
+    <li class="unowned create-shop-item">
       <div class="shop-item">
-        <i class="fas fa-star"></i>
-        <p>Create Your Own</p>
-        <div class="button-panel">
-          <button type="button" class="shop-button shop-add-button" onClick="location.href='/shop/{{type}}/create'">
-                <i class="fas fa-plus"></i>+
-          </button>
+
+        <div class="icon-panel">
+          <i class="fas fa-star"></i>
         </div>
+
+        <div class="item-text-panel">
+
+          <div class="name-panel">
+            <p>Create Your Own</p>
+          </div>
+          <div class="desc-panel">
+            <p>If it's in the school rules, it's just not fun</p>
+          </div>
+
+        </div>
+
+        <div class="button-panel">
+              <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
+                <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
+              </form>
+        </div>
+
       </div>
     </li>
   {{#each items}}
     <li class="{{#if this.owned}}owned{{else}}unowned{{/if}}">
       <div class="shop-item">
-        <i class="{{this.icon}}"></i>
-        <p>{{this.name}}</p>
-        <div class="button-panel">
-          {{#if this.owned}}
-            <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
-              <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i>-</button>
-            </form>
-          {{else}}
-            <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
-              <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i>+</button>
-            </form>
-          {{/if}}
+
+        <div class="icon-panel">
+          <i class="{{this.icon}}"></i>
         </div>
+
+        <div class="item-text-panel">
+
+          <div class="name-panel">
+            <p>{{this.name}}</p>
+          </div>
+          <div class="desc-panel">
+            <p>{{this.description}}</p>
+          </div>
+
+        </div>
+
+        <div class="button-panel">
+            {{#if this.owned}}
+              <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
+                <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i></button>
+              </form>
+            {{else}}
+              <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
+                <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
+              </form>
+            {{/if}}
+        </div>
+
       </div>
     </li>
-    <div class="desc-panel">
-          <p>{{this.description}}</p>
-    </div>
   {{/each}}
   </ul>
 </div>
