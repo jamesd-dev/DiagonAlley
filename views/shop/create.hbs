@@ -1,27 +1,23 @@
-<div>{{this.name}}Create page</div>
-<div class=''>
-    <form method="POST" action="/profile/create?:" >
-        <div class="">
+<div class="shop-title-panel">
+  <h1 class="shop-title">{{name}}</h1>
+</div>
+
+<div class="shop-create-panel main-panel">
+  
+    <form method="POST" action="/shop/{{type}}/create" >
+        {{!-- <div class="icon-panel">
             <label>Icon</label>
-            <input type="file" name="icon" class="">
-        </div>
-        <div class="">
+            <input type="file" name="icon" value="fas fa-star">
+        </div> --}}
+        <div class="item-name-panel">
             <label>{{this.name}}Name</label>
             <input type="text" name="name" class="" placeholder="Fluffy">
         </div>
-        <div class="">
+        <div class="item-desc-panel">
             <label>Description</label>
-            <input type="text" name="description" class="" placeholder="Controls fire">
+            <textarea type='text' name="description" class="" placeholder="Controls fire"></textarea>
         </div>
-        <div class="">
-            <label>Item Type</label>
-            <select name="itemType">
-              <option>{{this.name}}</option>
-              <option>pet</option>
-              <option>wand</option>
-              <option>book</option>
-              <option>potion</option>
-            </select>
-        </div>
-        <button type="submit" class="">Create</button>
+        <button type="submit" class="create-button">Create</button>
     </form>
+
+</div>

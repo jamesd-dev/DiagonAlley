@@ -25,7 +25,10 @@ let shopSchema = new Schema(
     owners: [{
       type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }],
-    owned: {type: Boolean} // whether the person viewing the item owns it. Gets updated as the item is processed to show
+    owned: {type: Boolean}, // whether the person viewing the item owns it. Gets updated as the item is processed to show
+    author: {
+      type: String
+    }
   },
   {
     timestamps: true

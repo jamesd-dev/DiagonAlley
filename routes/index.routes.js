@@ -69,26 +69,6 @@ router.get('/', (req, res) => {
 //   })
 // });
 
-router.get('/profile/create', (req, res) => {
-  if(!req.session.loggedInUser) {
-    res.render('auth/login.hbs', {layout: false});
-  } else {
-    res.render('shop/create.hbs');
-  }
-});
-
-router.post('/profile/create', (req, res, next) => {
-  const {icon, name, description, itemType} = req.body;
-
-  ShopModel.create({icon, name, description, itemType})
-  .then((response) => {
-      res.redirect('/profile/pets');
-  })
-  .catch (() => {
-      res.send('something went wrong');
-  });
-});
-
 router.get('/accept', (req, res) => {
   if(!req.session.loggedInUser) {
     res.render('auth/login.hbs', {layout: false});
@@ -183,6 +163,47 @@ router.post('/shop/:shopType/:itemId/delete', (req, res, next) => {
     console.log('failed to remove item from profile', r);
     res.redirect(`/shop/${req.params.shopType}`);
   })
+});
+
+router.get('/shop/:shopType/create', (req, res) => {
+  if (!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
+
+    // get shop type
+    const shopType = req.params.shopType;
+    // create shop name from shop type
+    let shopName = 'Untitled';
+    switch (req.params.shopType) {
+      case 'pet' :
+        shopName = 'Eeylops Owl Emporium';
+        break;
+      case 'book' :
+        shopName = 'Flourish and Blotts';
+        break;
+      case 'potion' :
+        shopName = 'Mr Mulpepper\'s Apothecary';
+        break;
+    }
+
+    res.render('shop/create.hbs', {type: shopType, name: shopName});
+  }
+});
+
+router.post('/shop/:shopType/create', (req, res, next) => {
+  const {name, description} = req.body;
+  const icon = 'fas fa-star'; // default for now until we work out how to display the icons as options
+  const itemType = req.params.shopType;
+  const username = req.session.loggedInUser.username;
+
+  ShopModel.create({icon, name, description, itemType, author: username})
+  .then((response) => {
+    res.redirect(307, `/shop/${req.params.shopType}/${response._id}/add`);
+  })
+  .catch ((response) => {
+    res.redirect(`/shop/${req.params.shopType}/create`);
+    console.log('failed to create new item: ', response);
+  });
 });
 
 module.exports = router;

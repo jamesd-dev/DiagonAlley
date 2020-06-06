@@ -2,8 +2,16 @@
   <h1 class="shop-title">{{name}}</h1>
 </div>
 
-<div class="shop-items-panel">
+<div class="shop-items-panel main-panel">
   <ul class='shop-item-list'>
+    <li class="shop-item unowned">
+      <i class="fas fa-star"></i>
+      <p>Create Your Own</p>
+      <a href="/shop/{{type}}/create" class="shop-button shop-add-button">
+          <i class="fas fa-plus"></i>
+      </a>
+      
+    </li>
   {{#each items}}
     <li class="shop-item {{#if this.owned}}owned{{else}}unowned{{/if}}">
       <i class="{{this.icon}}"></i>
