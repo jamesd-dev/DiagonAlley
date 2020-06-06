@@ -2,15 +2,18 @@
   <h1 class="shop-title">{{name}}</h1>
 </div>
 
+<img src="/images/iron-bracket.png" alt="iron-bracket" id="left-bracket">
+<img src="/images/iron-bracket.png" alt="iron-bracket" id="right-bracket">
+
 <div class="shop-items-panel main-panel">
   <ul class='shop-item-list'>
     <li class="shop-item unowned">
       <i class="fas fa-star"></i>
       <p>Create Your Own</p>
       <div class="button-panel">
-        <a href="/shop/{{type}}/create" class="shop-button shop-add-button">
-            <i class="fas fa-plus"></i>
-        </a>
+        <button type="button" class="shop-button shop-add-button" onClick="location.href='/shop/{{type}}/create'">
+              <i class="fas fa-plus"></i>+
+        </button>
       </div>
     </li>
   {{#each items}}
@@ -20,11 +23,11 @@
       <div class="button-panel">
         {{#if this.owned}}
           <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
-            <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i></button>
+            <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i>-</button>
           </form>
         {{else}}
           <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
-            <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
+            <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i>+</button>
           </form>
         {{/if}}
       </div>
