@@ -7,24 +7,27 @@
     <li class="shop-item unowned">
       <i class="fas fa-star"></i>
       <p>Create Your Own</p>
-      <a href="/shop/{{type}}/create" class="shop-button shop-add-button">
-          <i class="fas fa-plus"></i>
-      </a>
-      
+      <div class="button-panel">
+        <a href="/shop/{{type}}/create" class="shop-button shop-add-button">
+            <i class="fas fa-plus"></i>
+        </a>
+      </div>
     </li>
   {{#each items}}
     <li class="shop-item {{#if this.owned}}owned{{else}}unowned{{/if}}">
       <i class="{{this.icon}}"></i>
       <p>{{this.name}}</p>
-      {{#if this.owned}}
-        <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
-          <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus shop-button shop-delete-button"></i></button>
-        </form>
-      {{else}}
-        <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
-          <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
-        </form>
-      {{/if}}
+      <div class="button-panel">
+        {{#if this.owned}}
+          <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
+            <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i></button>
+          </form>
+        {{else}}
+          <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
+            <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
+          </form>
+        {{/if}}
+      </div>
     </li>
   {{/each}}
   </ul>
