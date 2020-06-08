@@ -360,34 +360,35 @@ body::-webkit-scrollbar-thumb {
 #question-div .question-content {
   padding: 0;
   margin: 0;
-  color: var(--bg-primary);
   transition: .1s;
-  visibility: hidden;
+  color: var(--hidden-color);
+  visibility: visible;
   font-weight: 700;
   text-align: center;
 }
 
-.main-panel:hover #question-div .question-content{
-  transition: .1s;
-  color: var(--hidden-color);
-  visibility: visible;
+#question-div #question-link:hover {
+  color: var(--highlight-color);
 }
 
 #question-div {
   transition: .3s;
-  padding: 0;
   margin: 0;
-  line-height: 0;
-}
-
-.main-panel:hover #question-div {
-  transition: .3s;
+  --slider-height: .5rem;
   padding: 2rem 0 2rem 0;
   line-height: 1.5rem;
 }
+
 #question-div .slider-panel {
   display: flex;
   align-items: center;
+  color: var(--hidden-color);
+}
+
+#question-div .slider-panel .slider-label {
+  text-align: center;
+  font-weight: 700;
+  padding: 0 1rem;
 }
 
 #question-div .middle {
@@ -398,4 +399,57 @@ body::-webkit-scrollbar-thumb {
   position: relative;
 }
 
-#question-div .slider-container
+#question-div .slider-container .bar {
+  position: absolute;
+  z-index: 1;
+  height: var(--slider-height);
+  width: 100%;
+  background-color: var(--hidden-color);
+  border-radius: calc(var(--slider-height) / 2);
+  overflow: hidden;
+  top: .55rem;
+}
+
+#question-div .slider-container .slider {
+  position: relative;
+  z-index: 2;
+  -webkit-appearance: none;
+  margin: 0;
+  width: 100%;
+  height: var(--slider-height);
+  border-radius: calc(var(--slider-height) / 2);
+  outline: none;
+  background-color: transparent;
+}
+
+#question-div .slider-container .bar .fill {
+  display: block;
+  width: 50%;
+  height: 100%;
+  background-color: var(--highlight-color);
+}
+
+#question-div .slider-container .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--slider-height);
+  height: var(--slider-height);
+  background-color: var(--bg-secondary);
+  border-radius: 50% 50% 50% 50%;
+  padding: 0;
+  margin: 0;
+  transform: rotate(-45deg) translate(0, 0);
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 0 0 var(--highlight-color);
+  transition: .3s ease-in-out;
+}
+
+#question-div .slider-container .slider:active::-webkit-slider-thumb,
+#question-div .slider-container:hover .slider::-webkit-slider-thumb {
+  border-bottom-left-radius: 0;
+  transform: rotate(-45deg) translate(100%, -100%);
+}
+
+#question-div .slider-container .slider:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 .1rem var(--highlight-color);
+}

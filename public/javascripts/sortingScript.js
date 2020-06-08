@@ -2,7 +2,7 @@
 const sortingHat = document.getElementById('sorting-head-image');
 const mainPanel = document.getElementById('sorting-main-panel');
 
-function makeQuestionPanel(question, withSlider) {
+function makeQuestionPanel(question, withSlider, link) {
 
   let questionPanel = document.getElementById('question-div');
 
@@ -25,9 +25,13 @@ function makeQuestionPanel(question, withSlider) {
 
     questionPanel.appendChild(slider);
 
-  } else {
-    questionElement.classList.add('clickable');
-  }
+  } 
+
+  let linkElement = document.createElement('a');
+  linkElement.innerHTML = link;
+  linkElement.classList.add('question-content');
+  linkElement.id = 'question-link';
+  questionPanel.appendChild(linkElement);
 
 }
 
@@ -36,4 +40,4 @@ function updateSlider(value) {
   sliderFill.style.width = value + '%';
 }
 
-makeQuestionPanel('Question', true);
+makeQuestionPanel('Question', true, 'Next');
