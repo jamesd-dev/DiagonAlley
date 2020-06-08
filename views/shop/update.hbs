@@ -12,16 +12,16 @@
   <h1 class="shop-title">Update</h1>
 </div>
 <div class="shop-create-panel main-panel">
-    <form method="POST" action="/shop/{{type}}/{{item._id}}/update" >
+    <form method="POST" action="/shop/{{items.itemType}}/{{items._id}}/update" >
         <div class="item-name-panel">
             <label>Name</label>
-            <input type="text" name="name" class="" value="{{item.name}}">
+            <input type="text" name="name" class="" value="{{items.name}}">
         </div>
         <div class="item-desc-panel">
             <label>Description</label>
-            <textarea type='text' name="description" class="" value="{{item.description}}"></textarea>
+            <textarea type='text' name="description" class="description-update-input">{{items.description}}</textarea>
         </div>
-        <h3>{{items.author}}</h3>
+        <h3 style="color: white">{{items.author}}</h3>
         <button type="submit" class="create-button">Update</button>
     </form>
 </div>
