@@ -69,20 +69,15 @@
               <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
                 <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
               </form>
-            {{/if}}
-                  <form method="POST" action="/shop/{{../type}}/{{this._id}}/update">
-                  <button type="submit" class="shop-button shop-add-button"><i class="fas fa-pen"></i></button>
+                  <form method="POST" action="/shop/{{items.type}}/{{items_id}}/update">
+                  <button type="submit" class="shop-button shop-update-button"><i class="fas fa-pen"></i></button>
                   </form>
+            {{/if}}
         </div>
       </div>
     </li>
   {{/each}}
   </ul>
 </div>
-        {{!-- {{#if this.created}} --}}
-              {{!-- <form method="POST" action="/shop/{{../type}}/{{this._id}}/update">
-                <button type="submit" class="shop-button shop-add-button"><i class="fas fa-pen"></i></button>
-              </form> --}}
-        {{!-- {{/if}} --}}
 </body>
 </html>
