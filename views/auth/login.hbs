@@ -15,11 +15,18 @@
     <label for="user-pass">Password</label>
     <input type="password" name="password" id="user-pass">
     <button type="submit">Sign In</button>
+    <p>
+      Not registered? <span class="field-content highlight-front">
+        <a href="/signup" hreflang="en">Create an Account</a>
+      </span>
+    </p>
   </form>
 
   {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
   {{/if}}
+
+
 
 </body>
 
