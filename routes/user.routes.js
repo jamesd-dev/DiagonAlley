@@ -3,14 +3,16 @@ const router = express.Router();
 const ShopModel = require('../models/Shop.model');
 const UserModel = require('../models/User.model');
 
+//acceptance letter
 router.get('/accept', (req, res) => {
   if(!req.session.loggedInUser) {
     res.render('auth/login.hbs', {layout: false});
   } else {
-    res.render('auth/accept.hbs');
+    res.render('users/accept.hbs', {userData: req.session.loggedInUser});
   }
 });
 
+//profile
 router.get('/profile', (req, res) => {
 
     UserModel.find()
@@ -23,6 +25,7 @@ router.get('/profile', (req, res) => {
     });
 });
 
+//deleting things from profile
 router.post('/profile/:itemId/delete', (req, res, next) => {
   const userId = req.session.loggedInUser._id;
   const itemId = req.params.itemId;

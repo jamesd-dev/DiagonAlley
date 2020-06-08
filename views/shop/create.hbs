@@ -1,3 +1,6 @@
+<head>
+  <script src="https://kit.fontawesome.com/69e6589eb5.js" crossorigin="anonymous"></script>
+</head>
 <div class="shop-title-panel">
   <h1 class="shop-title">{{name}}</h1>
 </div>
@@ -5,10 +8,10 @@
 <div class="shop-create-panel main-panel">
   
     <form method="POST" action="/shop/{{type}}/create" >
-        {{!-- <div class="icon-panel">
+        <div class="icon-panel">
             <label>Icon</label>
             <input type="file" name="icon" value="fas fa-star">
-        </div> --}}
+        </div>
         <div class="item-name-panel">
             <label>{{this.name}}Name</label>
             <input type="text" name="name" class="" placeholder="Fluffy">
