@@ -103,10 +103,9 @@ router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
   if (!req.session.loggedInUser) {
     res.render('auth/login.hbs', {layout: false});
   } else {
-    const shopType = req.params.shopType;
   ShopModel.findById(req.params.itemId)
   .then((items) => {
-      res.render('shop/update.hbs');
+      res.render('shop/update.hbs', {items});
   })
   .catch(() => {
       res.send('something went wrong');
@@ -114,18 +113,17 @@ router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
   }
 });
 
-
 router.post('/shop/:shopType/:itemId/update', (req, res, next) => {
-  let id = req.params.itemId;
-  const {name, description} = req.body;
-  ShopModel.findByIdAndUpdate(id, {$set: {name: name, description: description}})
-     .then((response) => {
-          res.redirect(`/shop/${req.params.shopType}`);
-     })
-     .catch(() => {
-          res.send('Something went wrong');
+
+     const {name, description} = req.body;
+       ShopModel.updateOne({$set: {name: name, description: description}})
+       .then(() => {
+         res.redirect(`/shop/${req.params.shopType}`);
+       })
+       .catch(() => {
+         res.redirect(`/shop/${req.params.shopType}`);
+       });
      });
-});
 
 router.get('/shop/:shopType/create', (req, res) => {
   if (!req.session.loggedInUser) {
