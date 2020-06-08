@@ -8,17 +8,17 @@
 </head>
 <body>
     <div class="shop-title-panel">
-  <h1 class="shop-title">{{name}}</h1>
+  <h1 class="shop-title">Update</h1>
 </div>
 <div class="shop-create-panel main-panel">
-    <form method="POST" action="/shop/{{type}}/create" >
+    <form method="POST" action="/shop/{{type}}/update" >/shop/:shopType/:itemId/update
         <div class="item-name-panel">
-            <label>{{this.name}}Name</label>
-            <input type="text" name="name" class="" placeholder="Fish">
+            <label>Name</label>
+            <input type="text" name="name" class="" value="{{items.name}}" placeholder="Fish">
         </div>
         <div class="item-desc-panel">
             <label>Description</label>
-            <textarea type='text' name="description" class="" placeholder="Controls fire"></textarea>
+            <textarea type='text' name="description" class="" value="{{items.description}}" placeholder="Controls fire"></textarea>
         </div>
         <h3>{{author}}</h3>
         <button type="submit" class="create-button">Create</button>
