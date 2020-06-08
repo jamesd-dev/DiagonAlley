@@ -16,7 +16,7 @@
 
   <ul class='shop-item-list'>
   {{#each ownedItems}}
-    <li class="{{#if this.owned}}owned{{else}}unowned{{/if}}">
+    <li class="unowned">
       <div class="shop-item">
 
         <div class="icon-panel">
@@ -35,15 +35,9 @@
         </div>
 
         <div class="button-panel">
-            {{#if this.owned}}
-              <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
-                <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i></button>
-              </form>
-            {{else}}
-              <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
-                <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
-              </form>
-            {{/if}}
+            <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
+            <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i></button>
+            </form>
         </div>
 
       </div>

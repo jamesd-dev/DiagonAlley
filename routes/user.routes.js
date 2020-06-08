@@ -20,6 +20,16 @@ router.get('/profile', (req, res) => {
     .then((items) => {
       const ownedItems = items.ownedItems;
       const user = req.session.loggedInUser;
+
+      let sortedItems = items.ownedItems.reduce((collection, object) => {
+        console.log(collection);
+        collection[object.type].push(object);
+        console.log('get this far');
+        return collection;
+      }, {});
+    
+    console.log(sortedItems);
+
       res.render('users/profile.hbs', {ownedItems, user});
     })
     .catch(() => {
