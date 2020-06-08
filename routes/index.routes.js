@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 // One generic shop with its contents defined by it's type
 router.get('/shop/:shopType', (req, res) => {
-  if(!req.session.loggedInUser) {
+  if (!req.session.loggedInUser) {
     res.render('/', {layout: false});
   } else {
 
