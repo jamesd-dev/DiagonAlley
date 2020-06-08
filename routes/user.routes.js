@@ -15,10 +15,12 @@ router.get('/accept', (req, res) => {
 //profile
 router.get('/profile', (req, res) => {
 
-    UserModel.find()
+    UserModel.findById(req.session.loggedInUser._id)
     .populate('ownedItems')
     .then((items) => {
-      res.render('users/profile.hbs', {items});
+      const ownedItems = items.ownedItems;
+      const user = req.session.loggedInUser;
+      res.render('users/profile.hbs', {ownedItems, user});
     })
     .catch(() => {
       console.log('something went wrong');

@@ -1,19 +1,53 @@
 <head>
   <script src="https://kit.fontawesome.com/69e6589eb5.js" crossorigin="anonymous"></script>
 </head>
-<link rel="icon" href="../images/allhouses.png">
-<div>This is your profile page dude!!</div>
+<div class="title-panel">
+  <h1 class="title">{{user.username}}</h1>
+</div>
 
-<div class="profile-items-panel main-panel">
-    {{#each items}}
-    {{#each this.ownedItems}}
-    <i class="{{this.icon}}"></i>
-    <p>Name: {{this.name}}</p>
-    <p>Type: {{this.itemType}}</p>
-    <p>Description: {{this.description}}</p>
-        <form method="POST" action="/profile/{{this._id}}/delete" >
-            <button type="submit" class="">-</button>
-        </form>
-        {{/each}}
-    {{/each}}
+<img src="/images/iron-bracket.png" alt="iron-bracket" id="left-bracket">
+<img src="/images/iron-bracket.png" alt="iron-bracket" id="right-bracket">
+
+<div class="shop-items-panel main-panel">
+
+    <div class="house-head-image">
+        <img src="/images/{{user.hogwartsHouse}}.png" alt="">
+    </div>
+
+  <ul class='shop-item-list'>
+  {{#each ownedItems}}
+    <li class="{{#if this.owned}}owned{{else}}unowned{{/if}}">
+      <div class="shop-item">
+
+        <div class="icon-panel">
+          <i class="{{this.icon}}"></i>
+        </div>
+
+        <div class="item-text-panel">
+
+          <div class="name-panel">
+            <p>{{this.name}}</p>
+          </div>
+          <div class="desc-panel">
+            <p>{{this.description}}</p>
+          </div>
+
+        </div>
+
+        <div class="button-panel">
+            {{#if this.owned}}
+              <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
+                <button type="submit" class="shop-button shop-delete-button"><i class="fas fa-minus"></i></button>
+              </form>
+            {{else}}
+              <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
+                <button type="submit" class="shop-button shop-add-button"><i class="fas fa-plus"></i></button>
+              </form>
+            {{/if}}
+        </div>
+
+      </div>
+    </li>
+  {{/each}}
+  </ul>
 </div>

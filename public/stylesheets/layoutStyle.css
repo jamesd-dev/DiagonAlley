@@ -196,6 +196,9 @@ body::-webkit-scrollbar-thumb {
   margin-top: 12rem;
   background-color: white;
   box-shadow: 0px 0px 5px 0.5rem rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .shop-item-list {
@@ -323,7 +326,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* profile styles */
+.main-panel .house-head-image {
+  width: 50%;
+  padding: 3rem 0;
+  margin: 0 auto;
+}
 
+.main-panel .house-head-image img {
+  width: 100%;
+}
 
 /* shop create styles */
 
