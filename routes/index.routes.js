@@ -114,8 +114,10 @@ router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
 });
 
 router.post('/shop/:shopType/:itemId/update', (req, res, next) => {
-     const {name, description} = req.body;
-       ShopModel.updateOne({$set: {name: name, description: description}})
+
+  let id = req.params.itemId;  
+  const {name, description} = req.body;
+       ShopModel.findByIdAndUpdate({$set: {name: name, description: description}})
        .then(() => {
          res.redirect(`/shop/${req.params.shopType}`);
        })
