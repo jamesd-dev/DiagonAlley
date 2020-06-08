@@ -18,19 +18,22 @@ router.get('/profile', (req, res) => {
     UserModel.findById(req.session.loggedInUser._id)
     .populate('ownedItems')
     .then((items) => {
-      const ownedItems = items.ownedItems;
       const user = req.session.loggedInUser;
 
       let sortedItems = items.ownedItems.reduce((collection, object) => {
-        console.log(collection);
-        collection[object.type].push(object);
+        console.log(object.itemType);
+        if(collection[object.itemType]) {collection[object.itemType].push(object);}
+        else {
+          collection[object.itemType] = [];
+          collection[object.itemType].push(object);
+        }
         console.log('get this far');
         return collection;
       }, {});
     
     console.log(sortedItems);
 
-      res.render('users/profile.hbs', {ownedItems, user});
+      res.render('users/profile.hbs', {sortedItems, user});
     })
     .catch(() => {
       console.log('something went wrong');
