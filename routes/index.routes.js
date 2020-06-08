@@ -34,6 +34,9 @@ router.get('/shop/:shopType', (req, res) => {
       case 'potion' :
         shopName = 'Mr Mulpepper\'s Apothecary';
         break;
+      case 'cloak' :
+        shopName = 'Madam Malkin\'s Robes';
+        break;  
     }
 
     // get all items of shop type
@@ -145,6 +148,9 @@ router.get('/shop/:shopType/create', (req, res) => {
       case 'potion' :
         shopName = 'Mr Mulpepper\'s Apothecary';
         break;
+      case 'cloak' :
+        shopName = 'Madam Malkin\'s Robes';
+        break;  
     }
 
     res.render('shop/create.hbs', {type: shopType, name: shopName});

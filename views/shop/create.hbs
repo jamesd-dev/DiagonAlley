@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diagon Alley</title>
+    <link rel="icon" href="../images/allhouses.png">
+    <link rel="stylesheet" href="/stylesheets/layoutStyle.css" />
     <script src="https://kit.fontawesome.com/69e6589eb5.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
-    <div class="shop-title-panel">
-  <h1 class="shop-title">{{name}}</h1>
+    
+<div class="title-panel">
+  <h1 class="title">Create {{type}}</h1>
 </div>
+
+<img src="/images/iron-bracket.png" alt="iron-bracket" id="left-bracket">
+<img src="/images/iron-bracket.png" alt="iron-bracket" id="right-bracket">
+
+
 <div class="shop-create-panel main-panel">
     <form method="POST" action="/shop/{{type}}/create" >
         <div class="item-name-panel">
-            <label>{{this.name}}Name</label>
+            <label>{{this.name}} Name</label>
             <input type="text" name="name" class="" placeholder="Fish">
         </div>
         <div class="item-desc-panel">
@@ -21,7 +30,9 @@
             <textarea type='text' name="description" class="" placeholder="Controls fire"></textarea>
         </div>
         <h3>{{author}}</h3>
+        <div class="container" id="create">
         <button type="submit" class="create-button">Create</button>
+        </div>
     </form>
 </div>
 </body>

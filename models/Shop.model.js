@@ -19,7 +19,7 @@ let shopSchema = new Schema(
     },
     itemType: {
       type: String,
-      enum: ['pet', 'book', 'wand', 'potion', 'cloak'],
+      enum: ['pet', 'book', 'potion', 'cloak'],
       required: true
     },
     owners: [{

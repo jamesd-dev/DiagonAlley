@@ -474,3 +474,73 @@ body::-webkit-scrollbar-thumb {
 #question-div .slider-container .slider:active::-webkit-slider-thumb {
   box-shadow: 0 0 0 .1rem var(--highlight-color);
 }
+/* create page */
+
+.shop-create-panel {
+  margin-top: 12rem;
+  padding-top: 3rem;
+  background-color: #000000;
+}
+
+form label {
+  color: var(--bg-secondary);
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+
+form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 50%; 
+
+}
+
+#create {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+form input {
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+form button:hover {
+  background: var(--highlight-color);
+  color: #666;
+  transition: 0.3s ease background;
+}
+p {
+  margin-top:0;
+  padding-top: 0;
+  color: var(--highlight-color);
+  text-align: center;
+  
+}
+
+.highlight-front:hover a{ 
+  color: white;
+}
+
+.highlight-front a{ 
+  color: var(--bg-secondary);
+}
+
+textarea {
+  width: 100%;
+  text-align: center;
+  align-content: center;
+}
