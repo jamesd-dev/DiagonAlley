@@ -11,7 +11,7 @@
   <h1 class="shop-title">Update</h1>
 </div>
 <div class="shop-create-panel main-panel">
-    <form method="POST" action="/shop/{{type}}/update" >/shop/:shopType/:itemId/update
+    <form method="POST" action="/shop/{{items.type}}/{{items_id}}/update" >
         <div class="item-name-panel">
             <label>Name</label>
             <input type="text" name="name" class="" value="{{items.name}}" placeholder="Fish">
@@ -20,8 +20,8 @@
             <label>Description</label>
             <textarea type='text' name="description" class="" value="{{items.description}}" placeholder="Controls fire"></textarea>
         </div>
-        <h3>{{author}}</h3>
-        <button type="submit" class="create-button">Create</button>
+        <h3>{{items.author}}</h3>
+        <button type="submit" class="create-button">Update</button>
     </form>
 </div>
 </body>
