@@ -77,3 +77,15 @@ form button:hover {
   padding: 20px;
   width: 100%;
 }
+
+p {
+  margin-top:0;
+  padding-top: 0;
+  color: var(--highlight-color);
+  text-align: center;
+  
+}
+
+.highlight-front a{ 
+  color: blue;
+}
