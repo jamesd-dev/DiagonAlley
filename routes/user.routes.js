@@ -21,17 +21,14 @@ router.get('/profile', (req, res) => {
       const user = req.session.loggedInUser;
 
       let sortedItems = items.ownedItems.reduce((collection, object) => {
-        console.log(object.itemType);
-        if(collection[object.itemType]) {collection[object.itemType].push(object);}
+        let itemType = object.itemType[0].toUpperCase() + object.itemType.substring(1) + 's';
+        if(collection[itemType]) {collection[itemType].push(object);}
         else {
-          collection[object.itemType] = [];
-          collection[object.itemType].push(object);
+          collection[itemType] = [];
+          collection[itemType].push(object);
         }
-        console.log('get this far');
         return collection;
       }, {});
-    
-    console.log(sortedItems);
 
       res.render('users/profile.hbs', {sortedItems, user});
     })

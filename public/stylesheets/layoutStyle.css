@@ -339,6 +339,13 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
 }
 
+.main-panel .catagory-panel {
+  color: white;
+  text-align: center;
+  border-bottom: 3px solid var(--bg-secondary);
+  padding-top: 2rem;
+}
+
 /* shop create styles */
 
 /* sorting hat styles */
