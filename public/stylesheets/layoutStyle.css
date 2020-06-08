@@ -7,8 +7,8 @@
   --highlight-color: #ebebeb; /*Change to primary house colour later when sorted*/
   --hidden-color: #666666;
   --bg-primary: #000000;
-  --bg-secondary: #030303;
-  --owned-color: #030303;
+  --bg-secondary: rgb(54, 54, 54);
+  --owned-color: rgb(26, 26, 26);
 }
 
 @font-face {
