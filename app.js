@@ -64,6 +64,9 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/', userRouter);
+app.use('*', (req, res) => {
+  res.render('not-found.hbs', {layout: false});
+});
 
 // If store database is empty runs the seed file to fill database with the premade items
 const ShopModel = require('./models/Shop.model');

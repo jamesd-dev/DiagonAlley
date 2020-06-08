@@ -14,6 +14,7 @@ body {
 }
 
 .lost-main-div {
+  position: relative;
   max-width: 700px;
   min-width: 600px;
   height: 100vh;
@@ -25,8 +26,26 @@ body {
   box-shadow: 0px 0px 5px 0.5rem rgba(0,0,0,0.6);
 }
 
+.lost-main-div h1 {
+  font-size: 5rem;
+  margin: 0;
+  margin-top: 3rem;
+}
+
+.lost-main-div a {
+  text-decoration: none;
+  margin-top: 3rem;
+  font-size: 3rem;
+  color: #999999;
+}
+
+.lost-main-div a:hover {
+  color: white;
+}
+
 .lost-main-div img {
-  justify-self: flex-end;
+  position: absolute;
+  bottom: 3rem;
   width: 60%;
   padding: 0;
   margin: 0;
