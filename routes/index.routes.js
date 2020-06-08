@@ -107,8 +107,8 @@ router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
     res.render('auth/login.hbs', {layout: false});
   } else {
   ShopModel.findById(req.params.itemId)
-  .then((item) => {
-      res.render('shop/update.hbs', {userData: req.session.loggedInUser, type: req.params.shopType, item});
+  .then((items) => {
+      res.render('shop/update.hbs', {items});
   })
   .catch(() => {
       res.send('something went wrong');
@@ -118,11 +118,11 @@ router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
 
 router.post('/shop/:shopType/:itemId/update', (req, res, next) => {
 
-  let id = req.params.itemId;  
+  const itemId = req.params.itemId; 
   const {name, description} = req.body;
-       ShopModel.findByIdAndUpdate({$set: {name: name, description: description}})
-       .then(() => {
-         res.redirect(`/shop/${req.params.shopType}`);
+       ShopModel.findByIdAndUpdate({_id: itemId}, {$set: {name: name, description: description}})
+       .then((response) => {
+         res.redirect(`/shop`);
        })
        .catch(() => {
          res.redirect(`/shop/${req.params.shopType}`);
