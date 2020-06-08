@@ -130,6 +130,10 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 5rem;
 }
 
+.letter .text-block p {
+  color: black;
+}
+
 .letter h1 {
   text-align: center;
 }

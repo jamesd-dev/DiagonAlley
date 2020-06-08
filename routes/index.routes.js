@@ -181,4 +181,8 @@ router.get('/sorting-hat', (req, res) => {
   }
 });
 
+router.get('*', (req, res) => {
+  res.render('not-found.hbs', {layout: false});
+});
+
 module.exports = router;
