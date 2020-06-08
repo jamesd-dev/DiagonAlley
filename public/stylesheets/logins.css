@@ -86,6 +86,10 @@ p {
   
 }
 
+.highlight-front:hover a{ 
+  color: white;
+}
+
 .highlight-front a{ 
-  color: blue;
+  color: var(--bg-secondary);
 }
