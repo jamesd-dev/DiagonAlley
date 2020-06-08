@@ -1,9 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/logins.css">
+</head>
 
-<form method="POST" action="/signup">
+<body>
+  
+  <form method="POST" action="/signup">
     <label for="username">Username</label>
     {{#if username}}
-    <input type="text" name="username" id="username" value="{{username}}" >
+    <input type="text" name="username" id="username" value="{{username}}">
     {{else}}
     <input type="text" name="username" id="username">
     {{/if}}
@@ -11,13 +21,17 @@
     {{#if username}}
     <input type="email" name="email" id="user-email" value="{{email}}">
     {{else}}
-    <input type="email" name="email" id="user-email" >
+    <input type="email" name="email" id="user-email">
     {{/if}}
     <label for="user-pass">Password</label>
-    <input type="password" name="password" id="user-pass" >
-    <button type="submit" >Sign Up</button>
-</form>
+    <input type="password" name="password" id="user-pass">
+    <button type="submit">Sign Up</button>
+  </form>
 
-{{#if errorMessage}}
+  {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
-{{/if}}  
+  {{/if}}
+
+</body>
+
+</html>

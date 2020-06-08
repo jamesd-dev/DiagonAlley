@@ -1,0 +1,79 @@
+:root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  --highlight-color: #ebebeb; /*Change to primary house colour later when sorted*/
+  --hidden-color: #666666;
+  --bg-primary: #000000;
+  --bg-secondary: rgb(54, 54, 54);
+  --owned-color: rgb(26, 26, 26);
+}
+
+
+body {
+  background-image: url('../images/brick-pattern-greyscale.png')
+}
+
+form {
+  margin: 200px auto;
+  width: 380px;
+  
+
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-width: 3px;
+}
+
+form label {
+  color: var(--bg-secondary);
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+form input,
+form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+form button {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-secondary);
+  border-radius: 4px;
+  color: var(--highlight-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s ease background;
+  width: 100%;
+}
+
+form button:hover {
+  background: var(--highlight-color);
+  color: #666;
+  transition: 0.3s ease background;
+}
+
+.error {
+  background: red;
+  box-sizing: border-box;
+  color: var(--highlight-color);
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+}
