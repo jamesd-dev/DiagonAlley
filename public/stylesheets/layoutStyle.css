@@ -585,3 +585,14 @@ textarea {
   visibility: visible;
   line-height: 1.5rem;
 }
+
+.error {
+  background: red;
+  box-sizing: border-box;
+  color: var(--highlight-color);
+  margin: 20px auto;
+  padding: 5px;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+}

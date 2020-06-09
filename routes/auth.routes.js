@@ -95,7 +95,7 @@ router.post('/signup', (req, res) => {
                   });
                   return; 
                 }
-              })
+              });
           });  
   });
 

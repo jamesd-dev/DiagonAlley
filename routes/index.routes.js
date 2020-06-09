@@ -104,6 +104,7 @@ router.post('/shop/:shopType/:itemId/delete', (req, res, next) => {
   });
 });
 
+//updating created objects
 router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
   if (!req.session.loggedInUser) {
     res.render('auth/login.hbs', {layout: false});
@@ -118,6 +119,7 @@ router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
   }
 });
 
+//updating created objects
 router.post('/shop/:shopType/:itemId/update', (req, res, next) => {
   const itemId = req.params.itemId; 
   const {name, description} = req.body;
@@ -163,6 +165,52 @@ router.post('/shop/:shopType/create', (req, res, next) => {
   const icon = 'fas fa-star'; // default for now until we work out how to display the icons as options
   const itemType = req.params.shopType;
   const username = req.session.loggedInUser.username;
+  const shopType = req.params.shopType;
+
+  const myRegex = new RegExp(/^[a-zA-Z]+$/);
+  //cheching if name is only letters, if not rendering error
+  if (!myRegex.test(name)) {
+    let shopName = 'Untitled';
+    switch (req.params.shopType) {
+      case 'pet' :
+        shopName = 'Eeylops Owl Emporium';
+        break;
+      case 'book' :
+        shopName = 'Flourish and Blotts';
+        break;
+      case 'potion' :
+        shopName = 'Mr Mulpepper\'s Apothecary';
+        break;
+      case 'cloak' :
+        shopName = 'Madam Malkin\'s Robes';
+        break;  
+    }
+      res.status(500)
+      .render('shop/create.hbs', {type: shopType, name: shopName, errorMessage: 'Please use letters only'});
+      return; 
+  }
+  //checking if description is only letters, if not rendering error
+  if (!myRegex.test(description)) {
+    let shopName = 'Untitled';
+    switch (req.params.shopType) {
+      case 'pet' :
+        shopName = 'Eeylops Owl Emporium';
+        break;
+      case 'book' :
+        shopName = 'Flourish and Blotts';
+        break;
+      case 'potion' :
+        shopName = 'Mr Mulpepper\'s Apothecary';
+        break;
+      case 'cloak' :
+        shopName = 'Madam Malkin\'s Robes';
+        break;  
+    }
+      res.status(500)
+      .render('shop/create.hbs', {type: shopType, name: shopName, errorMessage: 'Please use letters only'});
+      return; 
+  }
+  else {
 
   ShopModel.create({icon, name, description, itemType, author: username})
   .then((response) => {
@@ -172,6 +220,7 @@ router.post('/shop/:shopType/create', (req, res, next) => {
     res.redirect(`/shop/${req.params.shopType}/create`);
     console.log('failed to create new item: ', response);
   });
+}
 });
 
 router.get('/sorting-hat', (req, res) => {

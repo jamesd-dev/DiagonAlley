@@ -29,11 +29,17 @@
             <label>Description</label>
             <textarea type='text' name="description" class="" placeholder="Controls fire"></textarea>
         </div>
+          {{#if errorMessage}}
+            <div class="error">{{errorMessage}}</div>
+          {{/if}}
         <h3>{{author}}</h3>
         <div class="container" id="create">
         <button type="submit" class="create-button">Create</button>
         </div>
     </form>
 </div>
+  {{#if errorMessage}}
+  <div class="error">{{errorMessage}}</div>
+  {{/if}}
 </body>
 </html>
