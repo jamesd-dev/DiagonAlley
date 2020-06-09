@@ -22,7 +22,7 @@
           <div class="middle">
             <div class="slider-container">
               <span class="bar"><span class="fill"></span></span>
-              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" data-plus='slytherin' data-neg='hufflepuff'>
+              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" onclick="updateScores(this, this.value)" data-plus='slytherin' data-neg='hufflepuff' data-question='0'>
             </div>
           </div>
         <p class="slider-label">That's me!</p>
@@ -39,7 +39,7 @@
           <div class="middle">
             <div class="slider-container">
               <span class="bar"><span class="fill"></span></span>
-              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" data-plus='ravenclaw' data-neg='gryffindor'>
+              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" onclick="updateScores(this, this.value)" data-plus='ravenclaw' data-neg='gryffindor' data-question='1'>
             </div>
           </div>
         <p class="slider-label">That's me!</p>
@@ -56,7 +56,7 @@
           <div class="middle">
             <div class="slider-container">
               <span class="bar"><span class="fill"></span></span>
-              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" data-plus='hufflepuff' data-neg='gryffindor'>
+              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" onclick="updateScores(this, this.value)" data-plus='hufflepuff' data-neg='gryffindor' data-question='2'>
             </div>
           </div>
         <p class="slider-label">That's me!</p>
@@ -73,7 +73,7 @@
           <div class="middle">
             <div class="slider-container">
               <span class="bar"><span class="fill"></span></span>
-              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" data-plus='hufflepuff' data-neg='gryffindor'>
+              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" onclick="updateScores(this, this.value)" data-plus='hufflepuff' data-neg='gryffindor' data-question='3'>
             </div>
           </div>
         <p class="slider-label">That's me!</p>
@@ -90,7 +90,7 @@
           <div class="middle">
             <div class="slider-container">
               <span class="bar"><span class="fill"></span></span>
-              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" data-plus='gryffindor' data-neg='slytherin'>
+              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" onclick="updateScores(this, this.value)" data-plus='gryffindor' data-neg='slytherin' data-question='4'>
             </div>
           </div>
         <p class="slider-label">That's me!</p>
@@ -107,7 +107,7 @@
           <div class="middle">
             <div class="slider-container">
               <span class="bar"><span class="fill"></span></span>
-              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" data-plus='slytherin' data-neg='hufflepuff'>
+              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" onclick="updateScores(this, this.value)" data-plus='slytherin' data-neg='hufflepuff' data-question='5'>
             </div>
           </div>
         <p class="slider-label">That's me!</p>
@@ -124,7 +124,7 @@
           <div class="middle">
             <div class="slider-container">
               <span class="bar"><span class="fill"></span></span>
-              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" data-plus='ravenclaw' data-neg='slytherin'>
+              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" onclick="updateScores(this, this.value)" data-plus='ravenclaw' data-neg='slytherin' data-question='6'>
             </div>
           </div>
         <p class="slider-label">That's me!</p>
@@ -141,7 +141,7 @@
           <div class="middle">
             <div class="slider-container">
               <span class="bar"><span class="fill"></span></span>
-              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" data-plus='gryffindor' data-neg='ravenclaw'>
+              <input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this, this.value)" onclick="updateScores(this, this.value)" data-plus='gryffindor' data-neg='ravenclaw' data-question='7'>
             </div>
           </div>
         <p class="slider-label">That's me!</p>
@@ -149,7 +149,7 @@
 
     </div>
 
-    <a id="question-link" class='question-content'>Sort Me!</a>
+    <a id="question-link" class='question-content' onclick='calcScores()'>Sort Me!</a>
 
     </div>
 

@@ -2,41 +2,91 @@
 const sortingHat = document.getElementById('sorting-head-image');
 const mainPanel = document.getElementById('sorting-main-panel');
 
-function makeQuestionPanel(question, withSlider, link) {
-
-  let questionPanel = document.getElementById('question-div');
-
-  // remove all existing children from question panel
-  while (questionPanel.lastElementChild) {
-    questionPanel.removeChild(questionPanel.lastElementChild);
-  };
-
-  let questionElement = document.createElement('p');
-  questionElement.innerHTML = question;
-  questionElement.classList.add('question-content');
-  questionPanel.appendChild(questionElement);
-
-  if(withSlider) {
-
-    let slider = document.createElement('div');
-    slider.classList.add('slider-panel');
-    
-    slider.innerHTML = '<p class="slider-label">I would never!</p><div class="middle"><div class="slider-container"><span class="bar"><span class="fill"></span></span><input type="range" id="slider" class="slider" min="0" max="100" value="50" oninput="updateSlider(this.value)"></div></div><p class="slider-label">That\'s me!</p>'
-
-    questionPanel.appendChild(slider);
-
-  } 
-
-  let linkElement = document.createElement('a');
-  linkElement.innerHTML = link;
-  linkElement.classList.add('question-content');
-  linkElement.id = 'question-link';
-  linkElement.setAttribute('href', '/');
-  questionPanel.appendChild(linkElement);
-
-}
+let scores =
+[
+  {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  },
+  {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  },
+  {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  },
+  {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  },
+  {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  },
+  {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  },
+  {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  },
+  {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  }
+];
 
 function updateSlider(element,value) {
   let sliderFill = element.previousElementSibling.firstElementChild;
   sliderFill.style.width = value + '%';
+}
+
+function updateScores(element, value) {
+  index = parseInt(element.getAttribute('data-question'));
+  scores[index][element.getAttribute('data-plus')] = parseInt(value) - 50;
+  scores[index][element.getAttribute('data-neg')] = 50 - parseInt(value);
+  console.log(scores[index]);
+}
+
+function calcScores() {
+
+  let result = {
+    gryffindor: 0,
+    hufflepuff: 0,
+    ravenclaw: 0,
+    slytherin: 0
+  };
+
+  for(let score of scores) {
+    result.gryffindor += score.gryffindor;
+    result.ravenclaw += score.ravenclaw;
+    result.hufflepuff += score.hufflepuff;
+    result.slytherin += score.slytherin;
+  }
+
+  let house = {score: -9999999, house: 'none'};
+  if(house.score <= result.gryffindor) {house.house = 'gryffindor'; house.score = result.gryffindor;}
+  if(house.score <= result.hufflepuff) {house.house = 'hufflepuff'; house.score = result.hufflepuff;}
+  if(house.score <= result.ravenclaw) {house.house = 'ravenclaw'; house.score = result.ravenclaw;}
+  if(house.score <= result.slytherin) {house.house = 'slytherin'; house.score = result.slytherin;}
+
+  console.log(result, house);
 }
