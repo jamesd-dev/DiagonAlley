@@ -89,4 +89,7 @@ function calcScores() {
   if(house.score <= result.slytherin) {house.house = 'slytherin'; house.score = result.slytherin;}
 
   console.log(result, house);
+
+  window.location.href = `/sorting-hat/${house.house}`;
+
 }

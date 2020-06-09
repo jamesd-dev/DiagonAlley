@@ -248,4 +248,16 @@ router.get('/sorting-hat', (req, res) => {
   }
 });
 
+router.get('/sorting-hat/:house', (req, res) => {
+  if (!req.session.loggedInUser) {
+    res.render('auth/home.hbs', {layout: false});
+  } else {
+    console.log(req.session.loggedInUser.hogwartsHouse);
+    if (req.session.loggedInUser.hogwartsHouse == 'unsorted') {
+      req.session.loggedInUser.hogwartsHouse = req.params.house;
+    }
+    res.render(`users/sorting-hat-${req.params.house}.hbs`);
+  }
+});
+
 module.exports = router;

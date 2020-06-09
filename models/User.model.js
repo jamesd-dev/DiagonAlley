@@ -19,7 +19,7 @@ const userSchema = new Schema(
     },
       hogwartsHouse: {
         type: String,
-        enum : ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff', 'Unsorted'],
+        enum : ['gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff', 'unsorted'],
         required: true
       },
     ownedItems: [{
