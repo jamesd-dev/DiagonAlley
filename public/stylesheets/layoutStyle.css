@@ -646,3 +646,31 @@ textarea {
   
   
 } */
+
+/* house info styles */
+
+#house-info-panel {
+  color: white;
+  background-color: black;
+  max-width: 700px;
+}
+
+#house-info-panel #house-head-image {
+  width: 40%;
+  padding: 3rem 0 1rem 0;
+}
+
+#house-info-panel #house-head-image img {
+  width: 100%;
+}
+
+#house-info-panel .house-description {
+  padding: 1rem 5rem;
+  text-align: center;
+}
+
+#house-info-panel .traits-list {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
