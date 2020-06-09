@@ -39,7 +39,8 @@ body::-webkit-scrollbar-thumb {
 /* nav bar styling */
 
 .nav-bar {
-  width: 5rem;
+  width: 20%;
+  max-width: 5rem;
   height: 100vh;
   position: fixed;
   background-color: var(--bg-primary);
@@ -57,7 +58,8 @@ body::-webkit-scrollbar-thumb {
   justify-content: flex-start;
   align-items: center;
   background-color: var(--bg-primary);
-  width: 5rem;
+  width: 20%;
+  max-width: 5rem;
   box-shadow: 3px 0px 5px 2px rgba(0,0,0,0.6);
 }
 .navbar-nav ul {
@@ -108,6 +110,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* acceptance letter styling */
+
+.house-letter-image {
+  width: 100%;
+  padding-top: 3rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+}
+
+.house-letter-image img {
+  width: 100%;
+  
+}
 
 .bacground-panel {
   width: 100%;
@@ -161,20 +177,22 @@ body::-webkit-scrollbar-thumb {
   position: fixed;
   top: 0;
   width: 100%;
-  min-height: 7rem;
+  /* min-height: 7rem; */
   margin-left: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 5px 0.5rem rgba(0,0,0,0.8);
-  min-width: 600px;
+  /* min-width: 600px; */
   z-index: 3;
 }
 
 .title-panel .title {
   color: var(--hidden-color);
-  font-size: 7rem;
+  font-size: 500%;
+  width: 80%;
   padding: 1rem 0;
+  text-align: center;
   margin: 0;
   transform: translateX(-5rem);
   font-family: 'hpFont';
@@ -196,8 +214,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .main-panel {
-  min-width: 200px;
-  max-width: 800px;
+  min-width: 20%;
+  max-width: 80%;
   min-height: calc(100vh - 12rem);
   box-sizing: border-box;
   margin: 0 auto;
@@ -342,6 +360,7 @@ body::-webkit-scrollbar-thumb {
   padding: 3rem 0;
   margin: 0 auto;
 }
+
 
 .main-panel .house-head-image img {
   width: 100%;
@@ -498,7 +517,6 @@ form label {
   width: 100%;
 }
 
-
 form button {
   box-sizing: border-box;
   font-size: 14px;
@@ -512,9 +530,6 @@ form button {
   display: flex;
   justify-content: center;
 }
-
-
-
 
 form input {
   box-sizing: border-box;
@@ -562,3 +577,24 @@ textarea {
   visibility: visible;
   line-height: 1.5rem;
 }
+
+
+/* @media only screen and (max-width: 414px) {
+  .navbar {
+    bottom: 0;
+    width: 100vw;
+    height: 4rem;
+  }
+
+  .navbar-nav {
+    width: 100vw;
+    height: 4rem;
+    flex-direction: row;
+  }
+
+  .nav-link {
+    justify-content: center;
+  }
+  
+  
+} */
