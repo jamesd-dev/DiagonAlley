@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 // One generic shop with its contents defined by it's type
 router.get('/shop/:shopType', (req, res) => {
   if (!req.session.loggedInUser) {
-    res.render('/', {layout: false});
+    res.render('auth/home.hbs', {layout: false});
   } else {
 
     const userId = req.session.loggedInUser._id;
@@ -64,6 +64,9 @@ router.get('/shop/:shopType', (req, res) => {
 });
 
 router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
+  if(!req.session.loggedInUser) {
+    res.render('auth/home.hbs');
+  } else {
   const userId = req.session.loggedInUser._id;
   const itemId = req.params.itemId;
   UserModel.findOneAndUpdate({_id: userId}, {$push: {ownedItems: [{_id: itemId}]}})
@@ -81,9 +84,13 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
     console.log('failed to add item to profile');
     res.redirect(`/shop/${req.params.shopType}`);
   });
+}
 });
 
 router.post('/shop/:shopType/:itemId/delete', (req, res, next) => {
+  if(!req.session.loggedInUser) {
+    res.render('auth/home.hbs');
+  } else {
   const userId = req.session.loggedInUser._id;
   const itemId = req.params.itemId;
   UserModel.updateOne({_id: userId}, {$pullAll: {ownedItems: [{_id: req.params.itemId}]}})
@@ -102,12 +109,13 @@ router.post('/shop/:shopType/:itemId/delete', (req, res, next) => {
     console.log('failed to remove item from profile', r);
     res.redirect(`/shop/${req.params.shopType}`);
   });
+}
 });
 
 //updating created objects
 router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
   if (!req.session.loggedInUser) {
-    res.render('auth/login.hbs', {layout: false});
+    res.render('auth/home.hbs', {layout: false});
   } else {
   ShopModel.findById(req.params.itemId)
   .then((items) => {
@@ -121,6 +129,9 @@ router.get('/shop/:shopType/:itemId/update', (req, res, next) => {
 
 //updating created objects
 router.post('/shop/:shopType/:itemId/update', (req, res, next) => {
+  if(!req.session.loggedInUser) {
+    res.render('auth/home.hbs');
+  } else {
   const itemId = req.params.itemId; 
   const {name, description} = req.body;
        ShopModel.findByIdAndUpdate({_id: itemId}, {$set: {name, description}})
@@ -130,11 +141,12 @@ router.post('/shop/:shopType/:itemId/update', (req, res, next) => {
        .catch(() => {
          res.redirect(`/shop/${req.params.shopType}`);
        });
+      }
      });
 
 router.get('/shop/:shopType/create', (req, res) => {
   if (!req.session.loggedInUser) {
-    res.render('auth/login.hbs', {layout: false});
+    res.render('auth/home.hbs', {layout: false});
   } else {
 
     // get shop type
@@ -161,6 +173,9 @@ router.get('/shop/:shopType/create', (req, res) => {
 });
 
 router.post('/shop/:shopType/create', (req, res, next) => {
+  if(!req.session.loggedInUser) {
+    res.render('auth/home.hbs');
+  } else {
   const {name, description} = req.body;
   const icon = 'fas fa-star'; // default for now until we work out how to display the icons as options
   const itemType = req.params.shopType;
@@ -221,11 +236,13 @@ router.post('/shop/:shopType/create', (req, res, next) => {
     console.log('failed to create new item: ', response);
   });
 }
+  }
 });
+// window.onbeforeunload = function() { return "Your work will be lost."; };
 
 router.get('/sorting-hat', (req, res) => {
   if (!req.session.loggedInUser) {
-    res.render('auth/login.hbs', {layout: false});
+    res.render('auth/home.hbs', {layout: false});
   } else {
     res.render('users/sorting-hat.hbs');
   }
