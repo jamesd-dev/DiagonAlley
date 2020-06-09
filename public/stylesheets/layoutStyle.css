@@ -99,6 +99,18 @@ body::-webkit-scrollbar-thumb {
   visibility: visible;
 }
 
+.nav-item:last-child {
+  justify-self: flex-end;
+  margin-top: auto;
+}
+
+.nav-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 /* .nav-item:last-child {
   margin-top: auto;
 } */
@@ -298,6 +310,10 @@ body::-webkit-scrollbar-thumb {
 .shop-item .button-panel .shop-button {
   outline: none;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .shop-item .button-panel .shop-button i {
