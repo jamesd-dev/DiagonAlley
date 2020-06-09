@@ -64,7 +64,7 @@ router.get('/shop/:shopType', (req, res) => {
 });
 
 router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
-  if(!req.session.loggedInUser) {
+  if (!req.session.loggedInUser) {
     res.render('auth/home.hbs');
   } else {
   const userId = req.session.loggedInUser._id;
