@@ -37,6 +37,8 @@ router.get('/shop/:shopType', (req, res) => {
       case 'cloak' :
         shopName = 'Madam Malkin\'s Robes';
         break;  
+      default:
+        res.redirect('/not-found');
     }
 
     // get all items of shop type

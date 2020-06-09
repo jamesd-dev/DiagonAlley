@@ -31,13 +31,12 @@ function makeQuestionPanel(question, withSlider, link) {
   linkElement.innerHTML = link;
   linkElement.classList.add('question-content');
   linkElement.id = 'question-link';
+  linkElement.setAttribute('href', '/');
   questionPanel.appendChild(linkElement);
 
 }
 
-function updateSlider(value) {
-  let sliderFill = document.querySelector('#question-div .slider-container .bar .fill');
+function updateSlider(element,value) {
+  let sliderFill = element.previousElementSibling.firstElementChild;
   sliderFill.style.width = value + '%';
 }
-
-makeQuestionPanel('Question', true, 'Next');
