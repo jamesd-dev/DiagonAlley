@@ -302,13 +302,17 @@ body::-webkit-scrollbar-thumb {
 
 
 
-.owned .button-panel button {
+.owned .button-panel .shop-button {
   width: 100%;
   height: 100%;
   background-color: var(--owned-color);
   border: 0;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .owned .item-text-panel {
@@ -327,7 +331,7 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--bg-primary);
 }
 
-.unowned .button-panel button {
+.unowned .button-panel .shop-button {
   width: 100%;
   height: 100%;
   background-color: var(--bg-primary);
