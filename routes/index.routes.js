@@ -244,7 +244,11 @@ router.get('/sorting-hat', (req, res) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs', {layout: false});
   } else {
-    res.render('users/sorting-hat.hbs');
+    if (req.session.loggedInUser.hogwartsHouse == 'unsorted') {
+      res.render('users/sorting-hat.hbs');
+    } else {
+      res.redirect(`/sorting-hat/${req.session.loggedInUser.hogwartsHouse}`);
+    }
   }
 });
 
@@ -256,7 +260,8 @@ router.get('/sorting-hat/:house', (req, res) => {
     if (req.session.loggedInUser.hogwartsHouse == 'unsorted') {
       req.session.loggedInUser.hogwartsHouse = req.params.house;
     }
-    res.render(`users/sorting-hat-${req.params.house}.hbs`);
+
+    res.render(`users/sorting-hat-${req.session.loggedInUser.hogwartsHouse}.hbs`);
   }
 });
 
