@@ -14,6 +14,9 @@ router.get('/accept', (req, res) => {
 
 //profile
 router.get('/profile', (req, res) => {
+  if(!req.session.loggedInUser) {
+    res.render('auth/home.hbs', {layout: false});
+  } else {
 
     UserModel.findById(req.session.loggedInUser._id)
     .populate('ownedItems')
@@ -35,10 +38,14 @@ router.get('/profile', (req, res) => {
     .catch(() => {
       console.log('something went wrong');
     });
+  }
 });
 
 //deleting things from profile
 router.post('/profile/:itemId/delete', (req, res, next) => {
+  if(!req.session.loggedInUser) {
+    res.render('auth/login.hbs', {layout: false});
+  } else {
   const userId = req.session.loggedInUser._id;
   const itemId = req.params.itemId;
   UserModel.updateOne({_id: userId}, {$pullAll: {ownedItems: [{_id: req.params.itemId}]}})
@@ -56,7 +63,8 @@ router.post('/profile/:itemId/delete', (req, res, next) => {
   .catch((r) => {
     console.log('failed to remove item from profile', r);
     res.redirect(`/profile`);
-  })
+  });
+}
 });
 
 module.exports = router;
