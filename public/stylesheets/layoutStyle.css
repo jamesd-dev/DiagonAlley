@@ -218,7 +218,7 @@ body::-webkit-scrollbar-thumb {
 
 .title-panel .title {
   color: var(--hidden-color);
-  font-size: 500%;
+  font-size: 7rem;
   width: 80%;
   max-height: 500%;
   padding: 1rem 0;
