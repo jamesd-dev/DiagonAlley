@@ -182,7 +182,7 @@ router.post('/shop/:shopType/create', (req, res, next) => {
   const username = req.session.loggedInUser.username;
   const shopType = req.params.shopType;
 
-  const myRegex = new RegExp(/^[a-zA-Z]+$/);
+  const myRegex = new RegExp(/^[a-zA-Z]+/);
   //cheching if name is only letters, if not rendering error
   if (!myRegex.test(name)) {
     let shopName = 'Untitled';
