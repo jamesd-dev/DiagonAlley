@@ -60,7 +60,13 @@
             <p>{{this.name}}</p>
           </div>
           <div class="desc-panel">
-            <p>{{this.description}}</p>
+            <p>
+              {{this.description}}
+              {{#if this.author}}
+                <br>
+                <strong>-{{this.author}}</strong>
+              {{/if}}
+            </p>
           </div>
 
         </div>

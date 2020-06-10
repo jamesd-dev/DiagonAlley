@@ -9,6 +9,12 @@ let pets = [{
   description: 'The most ferocious kind of underwater cat, likes fish, cuddles and the blood of the innocent'
 },
 {
+  icon: 'fas fa-otter',
+  name: 'Mink',
+  itemType: 'pet',
+  description: 'The larval stage of a fur coat. Doesn\'t seem too thrilled about it'
+},
+{
   icon: 'fas fa-hippo',
   name: 'Hippo',
   itemType: 'pet',
@@ -33,10 +39,22 @@ let pets = [{
   description: 'Not a kiwi, not really a bird either. It\'s an existential crisis with a beak'
 },
 {
+  icon: 'fas fa-cat',
+  name: 'Panther',
+  itemType: 'pet',
+  description: 'Goth buff cat'
+},
+{
   icon: 'fas fa-frog',
   name: 'Frog',
   itemType: 'pet',
   description: 'Solidify your reputation as a loser, be the king/queen of the bullied kids with your very own frog'
+},
+{
+  icon: 'fas fa-otter',
+  name: 'Niffler',
+  itemType: 'pet',
+  description: 'Cute thieves, which makes it okay'
 },
 {
   icon: 'fas fa-dragon',
@@ -51,10 +69,22 @@ let pets = [{
   description: 'Excellent for cleaning up all of that pesky carrion left over from slaying your enemies'
 },
 {
+  icon: 'fas fa-frog',
+  name: 'Toad',
+  itemType: 'pet',
+  description: 'Literally the same as a frog, just less smug about it'
+},
+{
   icon: 'fas fa-fish',
   name: 'Fish',
   itemType: 'pet',
   description: 'It\'s looking for it\'s dad'
+},
+{
+  icon: 'fas fa-fish',
+  name: 'Kraken',
+  itemType: 'pet',
+  description: 'Comes with free rum and nightmares'
 },
 {
   icon: 'fas fa-paw',
@@ -82,6 +112,12 @@ let books = [{
   description: 'A guide to the magical Flora surrounding us'
 },
 {
+  icon: 'fas fa-book',
+  name: 'javascript for wizards',
+  itemType: 'book',
+  description: 'You can do magic? ...what are you doing?, by Edmund Glitch'
+},
+{
   icon: 'fas fa-book-dead',
   name: 'Magical Drafts and Potions, by Arsenius Jigger',
   itemType: 'book',
@@ -95,9 +131,21 @@ let books = [{
 },
 {
   icon: 'fas fa-book-dead',
+  name: 'Pumpkin Soup for the Soul, by Dick Redding',
+  itemType: 'book',
+  description: 'For those days when you need touching stories to make you re-hate humanity'
+},
+{
+  icon: 'fas fa-book-dead',
   name: 'The Dark Forces: A Guide to Self-Protection, by Quentin Trimble',
   itemType: 'book',
   description: 'How to protect yourself from The Dark Forces'
+},
+{
+  icon: 'fas fa-book-dead',
+  name: 'The Necronmonican, by Goths',
+  itemType: 'book',
+  description: 'You can\'t be one of the non-conformists if you don\'t read this book'
 },
 {
   icon: 'fas fa-book',
@@ -117,6 +165,12 @@ let potions = [{
   name: 'Pepperup Potion',
   itemType: 'potion',
   description: 'A Pepperup Potion is designed to improve health, relieve coughs and colds'
+},
+{
+  icon: 'fas fa-glass-whiskey',
+  name: 'Absinthe',
+  itemType: 'potion',
+  description: 'A \'Potion\' to see \'visions\'. *wink*'
 },
 {
   icon: 'fas fa-flask',
