@@ -629,20 +629,31 @@ textarea {
 }
 
 
+
+/* mobile  */
+
+
 @media only screen and (max-width: 414px) {
-  .nav-bar {
-    width: 100vw;
-    max-width: 5rem;
-    height: 20%;
+  .navbar {
     position: fixed;
     bottom: 0;
+    width: 100vw;
+    height: 3rem;
+    background-color: black; 
+  }
+
+  .nav-bar {
+    width: 100vw;
+    /* height: 4rem; */
+    /* position: fixed;
+    bottom: 0; */
     background-color: var(--bg-primary);
   }
   
   .navbar-nav {
-    position: fixed;
-    bottom: 0;
-    height: 20%;
+    /* position: fixed;
+    bottom: 0; */
+    height: 5rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -651,48 +662,10 @@ textarea {
     justify-content: flex-start;
     align-items: center;
     background-color: var(--bg-primary);
-    width: 100%;
-    
+    width: 100vh;
     box-shadow: 3px 0px 5px 2px rgba(0,0,0,0.6);
   }
-  .navbar-nav ul {
-    padding: 2rem 0;
-    margin: 0;
-  }
-  .navbar-nav li {
-    list-style: none;
-    padding: 0.5rem 0;
-  }
   
-  .navbar-nav svg {
-    fill: var(--hidden-color);
-    filter: grayscale(100%) opacity(0.7);
-    transition: .3s;
-  }
-  
-  .nav-link + h6 {
-    color: var(--bg-secondary);
-    filter: grayscale(100%) opacity(0.7);
-    transition: .3s;
-    text-align: center;
-    padding: 0;
-    visibility: hidden;
-    margin: 0;
-  }
-  
-  .nav-link:hover svg {
-    fill: var(--highlight-color);
-    filter: grayscale(0%) opacity(1);
-    transition: .3s;
-  }
-  
-  .nav-link:hover + h6 {
-    color: var(--highlight-color);
-    filter: grayscale(0%) opacity(1);
-    transition: .3s;
-    padding: 0.2rem 0 2rem 0;
-    visibility: visible;
-  }
   
   .nav-item:last-child {
     justify-self: flex-end;
@@ -700,11 +673,21 @@ textarea {
   }
   
   .nav-list {
-    height: 100%;
     display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 2rem;
+    padding:.5rem, .5rem;
     flex-direction: row;
     justify-content: flex-start;
   }
   
+  .navbar-nav ul {
+    bottom: 0;
+    padding: 0 1rem;
+    margin: 0;
+    width: 100%;
+  }
   
 }
