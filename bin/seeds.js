@@ -113,9 +113,15 @@ let books = [{
 },
 {
   icon: 'fas fa-book',
-  name: 'javascript for wizards',
+  name: 'Javascript for Wizards, by Edmund Glitch',
   itemType: 'book',
-  description: 'You can do magic? ...what are you doing?, by Edmund Glitch'
+  description: 'You can do magic? ...what are you doing?'
+},
+{
+  icon: 'fas fa-book',
+  name: '101 Nose Growing Spells and Charms, by The Dark Lord',
+  itemType: 'book',
+  description: 'Of course they work!'
 },
 {
   icon: 'fas fa-book-dead',
@@ -128,6 +134,12 @@ let books = [{
   name: 'Fantastic Beasts and Where to Find Them, by Newt Scamander',
   itemType: 'book',
   description: 'Where to find great beasts'
+},
+{
+  icon: 'fas fa-book',
+  name: 'The Lord of the Bling, by Kanye West',
+  itemType: 'book',
+  description: 'A rappers guide to marrying hobbits'
 },
 {
   icon: 'fas fa-book-dead',
@@ -152,6 +164,12 @@ let books = [{
   name: 'The Standard Book of Spells (Grade 1), by Miranda Goshawk',
   itemType: 'book',
   description: 'Everything you need to know about spells'
+},
+{
+  icon: 'fas fa-book-dead',
+  name: 'Asteroid Farming, by The Little Prince',
+  itemType: 'book',
+  description: 'How to easily root out those pesky baobabs'
 }];
 
 let potions = [{
@@ -180,6 +198,12 @@ let potions = [{
 },
 {
   icon: 'fas fa-flask',
+  name: 'Message in a Bottle',
+  itemType: 'potion',
+  description: 'A mysterious bottle found on sandy shores! What mysteries might be contained within?'
+},
+{
+  icon: 'fas fa-flask',
   name: 'Confusing Concoction',
   itemType: 'potion',
   description: 'A Confusing Concoction causes the drinker to become confused, distracted[3] and sick.'
@@ -201,6 +225,12 @@ let potions = [{
   name: 'Sleekeazy\'s Hair Potion',
   itemType: 'potion',
   description: 'Sleekeazy\'s Hair Potion is a beauty treatment used by witches to smooth and straighten hair'
+},
+{
+  icon: 'fas fa-glass-whiskey',
+  name: 'Heroin',
+  itemType: 'potion',
+  description: 'A moste effectacious potione, the drinker wille moste surely trip balls'
 },
 {
   icon: 'fas fa-glass-whiskey',
@@ -240,10 +270,22 @@ let cloaks = [{
   description: 'These cloaks are enchanted with a Shield Charm and, when worn, shield the wearer from many light to moderate curses, jinxes, and other unfriendly spells. '
 },
 {
+  icon: 'fas fa-hat-wizard',
+  name: 'Thor\'s helmet',
+  itemType: 'cloak',
+  description: 'Helmet of the mighty Thor! Gain his mighty powers of being stalked by fangirls!'
+},
+{
   icon: 'fas fa-tshirt',
   name: 'Mantle',
   itemType: 'cloak',
   description: 'A type of loose garment; a long, loose cape-like cloak usually worn over indoor clothing to serve the same purpose as an overcoat'
+},
+{
+  icon: 'fas fa-tshirt',
+  name: 'Maid Outfit',
+  itemType: 'cloak',
+  description: 'For.. cleaning'
 },
 {
   icon: 'fas fa-tshirt',
@@ -256,6 +298,12 @@ let cloaks = [{
   name: 'Dragon Hide Gloves',
   itemType: 'cloak',
   description: 'I\'m sure you need it more than the dragon did'
+},
+{
+  icon: 'fas fa-mitten',
+  name: 'Fingerless Hobo Gloves',
+  itemType: 'cloak',
+  description: 'Now with a handy compartment for needles'
 },
 {
   icon: 'fas fa-hat-wizard',
