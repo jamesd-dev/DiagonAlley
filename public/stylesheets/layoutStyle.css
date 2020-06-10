@@ -13,14 +13,14 @@
 
 @font-face {
   font-family: "hpFont";
-  src: url("../fonts/hpFont.TTF");
+  src: url("/fonts/hpFont.ttf");
 }
 
 body {
   margin: 0;
   padding: 0;
   color: black;
-  background-image: url('../images/brick-pattern-greyscale.png');
+  background-image: url('/images/brick-pattern-greyscale.png');
   background-repeat: repeat;
 }
 
