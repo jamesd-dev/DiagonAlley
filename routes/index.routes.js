@@ -259,6 +259,7 @@ router.get('/sorting-hat/:house', (req, res) => {
     console.log(req.session.loggedInUser.hogwartsHouse);
     if (req.session.loggedInUser.hogwartsHouse == 'unsorted') {
       req.session.loggedInUser.hogwartsHouse = req.params.house;
+      UserModel.findByIdAndUpdate({_id: req.session.loggedInUser._id}, {$set: {hogwartsHouse: req.params.house}});
     }
 
     res.render(`users/sorting-hat-${req.session.loggedInUser.hogwartsHouse}.hbs`);
