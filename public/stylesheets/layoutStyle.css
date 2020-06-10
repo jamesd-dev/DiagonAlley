@@ -196,12 +196,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* shop styles */
+.titlepnl {
+  max-height: 500%
+}
 
 .title-panel {
   background-color: var(--bg-primary);
   position: fixed;
   top: 0;
   width: 100%;
+  max-height: 500%;
   /* min-height: 7rem; */
   margin-left: 5rem;
   display: flex;
@@ -216,6 +220,7 @@ body::-webkit-scrollbar-thumb {
   color: var(--hidden-color);
   font-size: 500%;
   width: 80%;
+  max-height: 500%;
   padding: 1rem 0;
   text-align: center;
   margin: 0;
