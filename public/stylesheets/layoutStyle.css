@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: "hpFont";
-  src: url("/fonts/hpFont.TTF");
+  src: font-url("/fonts/hpFont.TTF");
 }
 
 body {
