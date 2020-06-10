@@ -247,6 +247,36 @@ let cloaks = [{
 },
 {
   icon: 'fas fa-tshirt',
+  name: 'Gryffindor Robe',
+  itemType: 'cloak',
+  description: 'The official robe for the Gryffindor House'
+},
+{
+  icon: 'fas fa-tshirt',
+  name: 'Slytherin Robe',
+  itemType: 'cloak',
+  description: 'The official robe for the Slytherin House'
+},
+{
+  icon: 'fas fa-tshirt',
+  name: 'Ravenclaw Robe',
+  itemType: 'cloak',
+  description: 'The official robe for the Ravenclaw House'
+},
+{
+  icon: 'fas fa-tshirt',
+  name: 'Hufflepuff Robe',
+  itemType: 'cloak',
+  description: 'The official robe for the Hufflepuff House'
+},
+{
+  icon: 'fas fa-tshirt',
+  name: 'Quidditch Robe',
+  itemType: 'cloak',
+  description: 'Ready for a Quidditch match?'
+},
+{
+  icon: 'fas fa-tshirt',
   name: 'Fur Cloak',
   itemType: 'cloak',
   description: 'Long outer garment worn over the shoulders covering the back, with a fur lining.'
