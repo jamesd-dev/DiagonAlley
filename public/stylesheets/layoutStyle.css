@@ -620,10 +620,13 @@ textarea {
 }
 
 
+
+/* mobile  */
+
+
 @media only screen and (max-width: 414px) {
   .nav-bar {
     width: 100vw;
-    max-width: 5rem;
     height: 20%;
     position: fixed;
     bottom: 0;
