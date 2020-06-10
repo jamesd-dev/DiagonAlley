@@ -179,7 +179,7 @@ let potions = [{
   description: 'When a person drinks the Draught of Living Death, they go into a deep sleep so strong that they appear to be dead'
 },
 {
-  icon: 'fas fa-glass-flask',
+  icon: 'fas fa-flask',
   name: 'Blue sky',
   itemType: 'potion',
   description: 'Makes rainy day into a sunny day'
@@ -203,7 +203,7 @@ let potions = [{
   description: 'You will become super strong. It takes lots of energy'
 },
 {
-  icon: 'fas fa-glass-flask',
+  icon: 'fas fa-flask',
   name: 'Zombie',
   itemType: 'potion',
   description: 'No pain, no worries for one hour'
