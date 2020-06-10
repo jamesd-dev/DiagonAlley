@@ -196,9 +196,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* shop styles */
-.titlepnl {
-  max-height: 500%
-}
 
 .title-panel {
   background-color: var(--bg-primary);
@@ -412,15 +409,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* shop create styles */
-.error {
-  background: red;
-  box-sizing: border-box;
-  color: var(--highlight-color);
-  margin: 20px auto;
-  padding: 5px;
-  width: 100%;
-  text-align: center;
-}
 
 /* sorting hat styles */
 
@@ -632,50 +620,82 @@ textarea {
 }
 
 
-/* @media only screen and (max-width: 414px) {
-  .navbar {
+@media only screen and (max-width: 414px) {
+  .nav-bar {
+    width: 100vw;
+    max-width: 5rem;
+    height: 20%;
+    position: fixed;
     bottom: 0;
-    width: 100vw;
-    height: 4rem;
+    background-color: var(--bg-primary);
   }
-
+  
   .navbar-nav {
-    width: 100vw;
-    height: 4rem;
+    position: fixed;
+    bottom: 0;
+    height: 20%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--bg-primary);
+    width: 100%;
+    
+    box-shadow: 3px 0px 5px 2px rgba(0,0,0,0.6);
   }
-
-  .nav-link {
-    justify-content: center;
+  .navbar-nav ul {
+    padding: 2rem 0;
+    margin: 0;
+  }
+  .navbar-nav li {
+    list-style: none;
+    padding: 0.5rem 0;
+  }
+  
+  .navbar-nav svg {
+    fill: var(--hidden-color);
+    filter: grayscale(100%) opacity(0.7);
+    transition: .3s;
+  }
+  
+  .nav-link + h6 {
+    color: var(--bg-secondary);
+    filter: grayscale(100%) opacity(0.7);
+    transition: .3s;
+    text-align: center;
+    padding: 0;
+    visibility: hidden;
+    margin: 0;
+  }
+  
+  .nav-link:hover svg {
+    fill: var(--highlight-color);
+    filter: grayscale(0%) opacity(1);
+    transition: .3s;
+  }
+  
+  .nav-link:hover + h6 {
+    color: var(--highlight-color);
+    filter: grayscale(0%) opacity(1);
+    transition: .3s;
+    padding: 0.2rem 0 2rem 0;
+    visibility: visible;
+  }
+  
+  .nav-item:last-child {
+    justify-self: flex-end;
+    margin-left: auto;
+  }
+  
+  .nav-list {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
   }
   
   
-} */
-
-/* house info styles */
-
-#house-info-panel {
-  color: white;
-  background-color: black;
-  max-width: 700px;
-}
-
-#house-info-panel #house-head-image {
-  width: 40%;
-  padding: 3rem 0 1rem 0;
-}
-
-#house-info-panel #house-head-image img {
-  width: 100%;
-}
-
-#house-info-panel .house-description {
-  padding: 1rem 5rem;
-  text-align: center;
-}
-
-#house-info-panel .traits-list {
-  list-style: none;
-  text-align: center;
-  padding: 0;
 }
