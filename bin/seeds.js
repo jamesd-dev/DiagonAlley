@@ -179,6 +179,36 @@ let potions = [{
   description: 'When a person drinks the Draught of Living Death, they go into a deep sleep so strong that they appear to be dead'
 },
 {
+  icon: 'fas fa-glass-flask',
+  name: 'Blue sky',
+  itemType: 'potion',
+  description: 'Makes rainy day into a sunny day'
+},
+{
+  icon: 'fas fa-glass-whiskey',
+  name: 'Invisalion',
+  itemType: 'potion',
+  description: 'Makes you invisible for an hour'
+},
+{
+  icon: 'fas fa-glass-martini',
+  name: 'Smelly',
+  itemType: 'potion',
+  description: 'Makes you smell like flowers'
+},
+{
+  icon: 'fas fa-glass-whiskey',
+  name: 'Hulk',
+  itemType: 'potion',
+  description: 'You will become super strong. It takes lots of energy'
+},
+{
+  icon: 'fas fa-glass-flask',
+  name: 'Zombie',
+  itemType: 'potion',
+  description: 'No pain, no worries for one hour'
+},
+{
   icon: 'fas fa-glass-whiskey',
   name: 'Pepperup Potion',
   itemType: 'potion',
