@@ -289,7 +289,7 @@ let cloaks = [{
 },
 {
   icon: 'fas fa-tshirt',
-  name: 'Cloack of invisibility',
+  name: 'Cloak of invisibility',
   itemType: 'cloak',
   description: 'This cloak renders the wearer truly invisible, as opposed to other cloaks, whose enchantment tends to wear off after years of frequent use.'
 },
