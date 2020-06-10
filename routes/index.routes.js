@@ -256,10 +256,12 @@ router.get('/sorting-hat/:house', (req, res) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs', {layout: false});
   } else {
-    console.log(req.session.loggedInUser.hogwartsHouse);
     if (req.session.loggedInUser.hogwartsHouse == 'unsorted') {
       req.session.loggedInUser.hogwartsHouse = req.params.house;
-      UserModel.findByIdAndUpdate({_id: req.session.loggedInUser._id}, {$set: {hogwartsHouse: req.params.house}});
+      UserModel.findByIdAndUpdate({_id: req.session.loggedInUser._id}, {$set: {hogwartsHouse: req.params.house}})
+      .then((response) => {
+        UserModel.find({_id: req.session.loggedInUser._id}).then((response) => {console.log(response)});
+      });
     }
 
     res.render(`users/sorting-hat-${req.session.loggedInUser.hogwartsHouse}.hbs`);
