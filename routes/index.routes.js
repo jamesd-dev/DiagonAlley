@@ -166,7 +166,9 @@ router.get('/shop/:shopType/create', (req, res) => {
         break;
       case 'cloak' :
         shopName = 'Madam Malkin\'s Robes';
-        break;  
+        break; 
+      default:
+        res.redirect('/not-found'); 
     }
 
     res.render('shop/create.hbs', {type: shopType, name: shopName});
@@ -199,7 +201,9 @@ router.post('/shop/:shopType/create', (req, res, next) => {
         break;
       case 'cloak' :
         shopName = 'Madam Malkin\'s Robes';
-        break;  
+        break; 
+      default:
+        res.redirect('/not-found'); 
     }
       res.status(500)
       .render('shop/create.hbs', {type: shopType, name: shopName, errorMessage: 'Please use letters only'});
@@ -221,6 +225,8 @@ router.post('/shop/:shopType/create', (req, res, next) => {
       case 'cloak' :
         shopName = 'Madam Malkin\'s Robes';
         break;  
+      default:
+        res.redirect('/not-found');
     }
       res.status(500)
       .render('shop/create.hbs', {type: shopType, name: shopName, errorMessage: 'Please use letters only'});
@@ -233,8 +239,8 @@ router.post('/shop/:shopType/create', (req, res, next) => {
     res.redirect(307, `/shop/${req.params.shopType}/${response._id}/add`);
   })
   .catch ((response) => {
-    res.redirect(`/shop/${req.params.shopType}/create`);
     console.log('failed to create new item: ', response);
+    res.redirect(`/shop/${req.params.shopType}/create`);
   });
 }
   }
@@ -346,15 +352,15 @@ router.post('/wands/buy', (req, res) => {
     else if (wish === 'Love') {core = 'Unicorn hair';}
     else if (wish === 'Courage') {core = 'Phoenix Feather';}
 
-    if (flexi < 10) {
+    if (flexi < 20) {
       flexibility = 'Brittle';
-    } else if (flexi < 20) {
-      flexibility = 'Unyielding';
     } else if (flexi < 30) {
-      flexibility = 'Rigid';
+      flexibility = 'Unyielding';
     } else if (flexi < 40) {
-      flexibility = 'Firm';
+      flexibility = 'Rigid';
     } else if (flexi < 50) {
+      flexibility = 'Firm';
+    } else if (flexi < 60) {
       flexibility = 'A little flexible';
     } else if (flexi < 70) {
       flexibility = 'Giving';
@@ -364,7 +370,9 @@ router.post('/wands/buy', (req, res) => {
       flexibility = 'Whippy';
     }
 
-    res.render(`shop/wand-shop.hbs`, {user: req.session.loggedInUser, wood});
+    let length = Math.ceil(Math.random() * 5) + 7;
+
+    res.render(`shop/wand-shop.hbs`, {user: req.session.loggedInUser, wood, core, flexibility, length});
   }
 });
 
