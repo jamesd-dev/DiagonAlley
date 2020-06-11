@@ -2,7 +2,6 @@
 <div class="title-panel">
   <h1 class="title">{{name}}</h1>
 </div>
-
 {{!-- 
 <img src="/images/iron-bracket.png" alt="iron-bracket" id="left-bracket">
 <img src="/images/iron-bracket.png" alt="iron-bracket" id="right-bracket"> --}}
@@ -73,6 +72,9 @@
             {{#if this.author}}
                 <a href="/shop/{{../type}}/{{_id}}/update" class="shop-button shop-update-button"><i class="fas fa-pen"></i></a>
             {{/if}}
+            {{#if errorMessage}}
+            <div class="error">{{errorMessage}}</div>
+          {{/if}}
         </div>
       </div>
     </li>

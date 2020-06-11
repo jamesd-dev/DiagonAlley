@@ -119,6 +119,8 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
 
         } else {
           // user doesn't have enough money
+          // res.render('shop/shop.hbs', {errorMessage: "You don't have enought money"});
+          res.render('users/profile.hbs', {errorMessage: "You don't have enought money"});
         }
       })
       .catch(() => {
@@ -131,23 +133,66 @@ router.post('/shop/:shopType/:itemId/delete', (req, res, next) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs');
   } else {
+
+    // Step 1 get user and item id
     const userId = req.session.loggedInUser._id;
     const itemId = req.params.itemId;
-    UserModel.updateOne({ _id: userId }, { $pullAll: { ownedItems: [{ _id: req.params.itemId }] } })
+
+    // Step 2 get user and item
+    let getUser = UserModel.findById(userId);
+    let getItem = ShopModel.findById(itemId);
+
+    let userMoney = 0;
+    let itemCost = 1;
+
+    // Step 3 getting user money and item cost from database
+    let getValues = Promise.all([getUser, getItem])
+      .then(values => {
+        userMoney = values[0].money;
+        itemCost = values[1].money;
+      })
       .then(() => {
-        ShopModel.updateOne({ _id: itemId }, { $pullAll: { owners: [{ _id: userId }] } })
+        // Step 4 calculate values
+        let total = userMoney + itemCost;
+        console.log(userMoney, itemCost, total);
+
+        if (total >= 0) {
+          
+          // Step 5 update databases
+          let updateUserMoney = UserModel.findOneAndUpdate({_id: userId}, {money: total});
+          let updateUserItems = UserModel.findOneAndUpdate({_id: userId}, {$pullAll: {ownedItems: [{_id: itemId}]}});
+          let updateItemOwners = ShopModel.findOneAndUpdate({_id: itemId}, {$pullAll: {owners: [{_id: userId}]}});
+
+          Promise.all([updateUserMoney, updateUserItems, updateItemOwners])
           .then(() => {
-            console.log('deleted');
-            res.redirect(`/shop/${req.params.shopType}`);
+
+            // keep session info up to date
+            UserModel.findById(userId)
+            .then((user) => {
+              req.session.loggedInUser = user;
+
+              // redirect to page
+              // has to update session first
+              res.redirect(`/shop/${req.params.shopType}`);
+            })
+            .catch(() => {
+              console.log('failed to update user session');
+            });
+
           })
           .catch(() => {
-            console.log('failed to remove owner from object');
-            res.redirect(`/shop/${req.params.shopType}`);
+            console.log('failed to get update user money and item and user dbs');
           });
+
+        } else {
+          // user doesn't have enough money
+          // res.render('shop/shop.hbs', {errorMessage: "You don't have enought money"});
+          res.render({errorMessage: "You don't have enought money"});
+          res.redirect(`/shop/${req.params.shopType}`);
+        }
       })
-      .catch(r => {
-        console.log('failed to remove item from profile', r);
-        res.redirect(`/shop/${req.params.shopType}`);
+      .catch(() => {
+        console.log('failed to get user money or item cost');
       });
   }
 });
@@ -268,7 +313,7 @@ router.post('/shop/:shopType/create', (req, res, next) => {
       res.status(500).render('shop/create.hbs', { type: shopType, name: shopName, errorMessage: 'Please use letters only' });
       return;
     } else {
-      ShopModel.create({ icon, name, description, itemType, author: username })
+      ShopModel.create({ icon, name, description, itemType, money: 12, author: username })
         .then(response => {
           res.redirect(307, `/shop/${req.params.shopType}/${response._id}/add`);
         })
@@ -279,7 +324,6 @@ router.post('/shop/:shopType/create', (req, res, next) => {
     }
   }
 });
-// window.onbeforeunload = function() { return "Your work will be lost."; };
 
 router.get('/sorting-hat', (req, res) => {
   if (!req.session.loggedInUser) {
