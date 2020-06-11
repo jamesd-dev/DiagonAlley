@@ -436,26 +436,26 @@ router.post('/wands/buy', (req, res) => {
     }
 
     if (flexi < 20) {
-      flexibility = 'Brittle';
+      flexibility = 'brittle';
     } else if (flexi < 30) {
-      flexibility = 'Unyielding';
+      flexibility = 'unyielding';
     } else if (flexi < 40) {
-      flexibility = 'Rigid';
+      flexibility = 'rigid';
     } else if (flexi < 50) {
-      flexibility = 'Firm';
+      flexibility = 'somewhat firm';
     } else if (flexi < 60) {
-      flexibility = 'A little flexible';
+      flexibility = 'a little flexible';
     } else if (flexi < 70) {
-      flexibility = 'Giving';
+      flexibility = 'quite giving';
     } else if (flexi < 80) {
-      flexibility = 'Springy';
+      flexibility = 'springy';
     } else if (flexi < 100) {
-      flexibility = 'Whippy';
+      flexibility = 'whippy';
     }
 
     let length = Math.ceil(Math.random() * 5) + 7;
 
-    res.render(`shop/wand-shop.hbs`, { user: req.session.loggedInUser, wood, core, flexibility, length });
+    res.render(`shop/wand-result.hbs`, { user: req.session.loggedInUser, wood, core, flexibility, length });
   }
 });
 
