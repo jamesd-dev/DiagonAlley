@@ -350,7 +350,14 @@ router.get('/wands', (req, res) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs', { layout: false });
   } else {
-    res.render(`shop/wand-shop.hbs`, { user: req.session.loggedInUser });
+    let user = UserModel.findById({_id: req.session.loggedInUser._id})
+    .then((user) => {
+      if(user.ownsWand) {
+        res.render(`shop/wand-shop-reject.hbs`, { user: req.session.loggedInUser });
+      } else {
+        res.render(`shop/wand-shop.hbs`, { user: req.session.loggedInUser });
+      }
+    })
   }
 });
 
@@ -446,10 +453,10 @@ router.post('/wands/buy', (req, res) => {
       flexibility = 'whippy';
     }
 
-    let length = Math.ceil(Math.random() * 5) + 7;
+    let length = Math.ceil(Math.random() * 5) + 11;
 
     // make the wand object
-    ShopModel.create({ icon: "fas fa-star", name : user.username + "'s wand", description : "A " + wood + " wand with a " + core + " core, " + length + " inches long and " + flexibility + ".", itemType: 'wand', money: 0, author: user.username })
+    ShopModel.create({ icon: "fas fa-star", name : user.username + "'s wand", description : "A " + wood + " wand with a " + core + " core, " + length + " inches long, and " + flexibility + ".", itemType: 'wand', money: 0, author: user.username })
         .then((response) => {
           UserModel.findOneAndUpdate({ _id: user._id }, { $push: { ownedItems: [{ _id: response._id }] } }).then(() => {
             UserModel.findOneAndUpdate({ _id: user._id }, { ownsWand: true }).then(() => {
