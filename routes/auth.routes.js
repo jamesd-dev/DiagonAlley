@@ -54,7 +54,7 @@ router.post('/signup', (req, res) => {
         console.log('Salt: ', salt);
         bcrypt.hash(password, salt)
           .then((passwordHash) => {
-            UserModel.create({username, email, passwordHash, hogwartsHouse: 'unsorted'})
+            UserModel.create({username, email, passwordHash, hogwartsHouse: 'unsorted', money: 100})
               .then(() => {
                 UserModel.findOne({username})
                 .then((userData) => {

@@ -69,6 +69,7 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
   } else {
   const userId = req.session.loggedInUser._id;
   const itemId = req.params.itemId;
+
   UserModel.findOneAndUpdate({_id: userId}, {$push: {ownedItems: [{_id: itemId}]}})
   .then(() => {
     ShopModel.findOneAndUpdate({_id: itemId}, {$push: {owners: [{_id: userId}]}})
@@ -265,6 +266,14 @@ router.get('/sorting-hat/:house', (req, res) => {
     }
 
     res.render(`users/sorting-hat-${req.session.loggedInUser.hogwartsHouse}.hbs`);
+  }
+});
+
+router.get('/wands', (req, res) => {
+  if (!req.session.loggedInUser) {
+    res.render('auth/home.hbs', {layout: false});
+  } else {
+    res.render(`shop/wand-shop.hbs`, {user: req.session.loggedInUser});
   }
 });
 
