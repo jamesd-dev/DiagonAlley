@@ -66,50 +66,6 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs');
   } else {
-    // const userId = req.session.loggedInUser._id;
-    // const itemId = req.params.itemId;
-
-    // //find user money and minus from it shop item money
-    // let userMoney = req.session.loggedInUser.money;
-    // let itemCost = 99999999;
-    // ShopModel.findById(itemId)
-    // .then((response) => {
-    //   itemCost = response.money;
-    //   console.log('User Money: ', userMoney);
-    //   userMoney -= itemCost;
-    //   if(userMoney >= 0) {
-    //     UserModel.findOneAndUpdate({_id: userId}, {money: userMoney})
-    //     .then(() => {
-    //       UserModel.findOneAndUpdate({_id: userId}, {$push: {ownedItems: [{_id: itemId}]}})
-    //       .then(() => {
-    //         ShopModel.findOneAndUpdate({_id: itemId}, {$push: {owners: [{_id: userId}]}})
-    //         .then(() => {
-
-    //             console.log('item cost: ', itemCost);
-    //             console.log('new User Money: ', userMoney);
-
-    //             //success
-    //             res.redirect(`/shop/${req.params.shopType}`);
-
-    //         })
-    //         .catch(() => {
-    //           console.log('failed to add user to item owners');
-    //           res.redirect(`/shop/${req.params.shopType}`);
-    //         });
-    //       })
-    //       .catch(() => {
-    //         console.log('failed to add item to profile');
-    //         res.redirect(`/shop/${req.params.shopType}`);
-    //       });
-    //     })
-    //     .catch(() => {
-    //       console.log('failed to alter user money');
-    //     });
-    //   } else {
-    //       // not enough money
-    //       res.redirect('/ugiu');
-    //   }
-    // });
 
     // Step 1 get user and item id
     const userId = req.session.loggedInUser._id;
@@ -147,13 +103,14 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
             UserModel.findById(userId)
             .then((user) => {
               req.session.loggedInUser = user;
+
+              // redirect to page
+              // has to update session first
+              res.redirect(`/shop/${req.params.shopType}`);
             })
             .catch(() => {
               console.log('failed to update user session');
             });
-
-            // redirect to page
-            res.redirect(`/shop/${req.params.shopType}`);
 
           })
           .catch(() => {
