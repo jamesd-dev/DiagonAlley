@@ -174,7 +174,7 @@ router.post('/shop/:shopType/:itemId/update', (req, res, next) => {
   } else {
     const itemId = req.params.itemId;
     const { name, description } = req.body;
-    ShopModel.findByIdAndUpdate({ _id: itemId }, { $set: { name, description } })
+    ShopModel.findByIdAndUpdate({itemId }, { $set: { name, description } })
       .then(response => {
         res.redirect(`/shop/${req.params.shopType}`);
       })
@@ -299,7 +299,7 @@ router.get('/sorting-hat/:house', (req, res) => {
   } else {
     if (req.session.loggedInUser.hogwartsHouse == 'unsorted') {
       req.session.loggedInUser.hogwartsHouse = req.params.house;
-      UserModel.findByIdAndUpdate({ _id: req.session.loggedInUser._id }, { $set: { hogwartsHouse: req.params.house } }).then(response => {
+      UserModel.findOneAndUpdate({ _id: req.session.loggedInUser._id }, { $set: { hogwartsHouse: req.params.house } }).then(response => {
         UserModel.find({ _id: req.session.loggedInUser._id }).then(response => {
           console.log(response);
         });

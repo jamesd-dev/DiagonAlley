@@ -2,57 +2,15 @@
 const sortingHat = document.getElementById('sorting-head-image');
 const mainPanel = document.getElementById('sorting-main-panel');
 
-let scores =
-[
-  {
-    gryffindor: 0,
-    hufflepuff: 0,
-    ravenclaw: 0,
-    slytherin: 0
-  },
-  {
-    gryffindor: 0,
-    hufflepuff: 0,
-    ravenclaw: 0,
-    slytherin: 0
-  },
-  {
-    gryffindor: 0,
-    hufflepuff: 0,
-    ravenclaw: 0,
-    slytherin: 0
-  },
-  {
-    gryffindor: 0,
-    hufflepuff: 0,
-    ravenclaw: 0,
-    slytherin: 0
-  },
-  {
-    gryffindor: 0,
-    hufflepuff: 0,
-    ravenclaw: 0,
-    slytherin: 0
-  },
-  {
-    gryffindor: 0,
-    hufflepuff: 0,
-    ravenclaw: 0,
-    slytherin: 0
-  },
-  {
-    gryffindor: 0,
-    hufflepuff: 0,
-    ravenclaw: 0,
-    slytherin: 0
-  },
-  {
-    gryffindor: 0,
-    hufflepuff: 0,
-    ravenclaw: 0,
-    slytherin: 0
-  }
-];
+let scores = [];
+scores.length = 8;
+
+scores.fill({
+  gryffindor: 0,
+  hufflepuff: 0,
+  ravenclaw: 0,
+  slytherin: 0
+});
 
 function updateSlider(element,value) {
   let sliderFill = element.previousElementSibling.firstElementChild;
@@ -63,7 +21,6 @@ function updateScores(element, value) {
   index = parseInt(element.getAttribute('data-question'));
   scores[index][element.getAttribute('data-plus')] = parseInt(value) - 50;
   scores[index][element.getAttribute('data-neg')] = 50 - parseInt(value);
-  console.log(scores[index]);
 }
 
 function calcScores() {
