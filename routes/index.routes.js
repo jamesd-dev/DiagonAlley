@@ -268,4 +268,12 @@ router.get('/sorting-hat/:house', (req, res) => {
   }
 });
 
+router.get('/wands', (req, res) => {
+  if (!req.session.loggedInUser) {
+    res.render('auth/home.hbs', {layout: false});
+  } else {
+    res.render(`shop/wand-shop.hbs`, {user: req.session.loggedInUser});
+  }
+});
+
 module.exports = router;

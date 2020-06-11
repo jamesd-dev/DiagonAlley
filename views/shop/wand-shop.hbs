@@ -1,0 +1,74 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/orreyStyle.css">
+  <link rel="stylesheet" href="/stylesheets/wandStyle.css">
+</head>
+
+<div class="title-panel" id='wand-title-panel'>
+  <h1 class="title" id='wand-title'>Ollivander's</h1>
+  <h3 class="sub-title" id='wand-sub-title'>Makers of fine wands since<br>382 B.C.</h3>
+</div>
+
+<div class="main-panel" id="wand-main-panel">
+
+  <div class="orrey-panel">
+
+    <div class="celes-main-ring" id='ring-3'>
+      <div class="celes-body" id='planet-3'></div>
+      <div class="celes-main-ring" id='ring-2'>
+
+        <div class="celes-moon-ring" id='moon-ring-1'>
+          <div class="celes-body" id='moon-1'></div>
+        </div>
+        <div class="celes-moon-ring" id='moon-ring-2'>
+          <div class="celes-body" id='moon-2'></div>
+        </div>
+        <div class="celes-body" id='planet-2'></div>
+
+        <div class="celes-main-ring" id='ring-1'>
+
+          <div class="celes-body" id='planet-1'></div>
+
+          <div class="sun"></div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <article id='wand-shop-info'>
+    Welcome! Welcome! In in, out of the cold, that's right. Welcome to Ollivander's my young friend, makers of fine wands since 382 B.C.
+    <br>
+    Now if I may be so bold, you seem like a muggle born to me. The wide eyes, the disbelieving smile, the absurd clothing, yeess yeeesss, a muggle born for sure. Well! let me explain the nature of wands!
+    <br>
+    You see, my dear {{user.username}}, unlike any other shop where might go and purchase a potion or book of your choosing, here at Ollivander's the wand chooses <em>you</em>.
+    <br>
+    So take a seat, take a seat, let me get your measurements...
+    <br>
+    Yes, yes very good...
+    <br>
+    And now you must answers some questions for me...
+  </article>
+
+  <form id='wand-questions'>
+    <label for="date-question" id='wand-date-question-label'>So, when were you born? </label>
+    <input type="date" id='wand-date-question' name='date-question'value='1992-01-01'>
+    <label for="wish-question" id='wand-wish-question-label'>Excellent, and tell me, given the choice between love, power or knowledge, which would you choose?</label>
+    <select id='wand-wish-question' name='wish-question'>
+      <option value="Power">Power</option>
+      <option value="Power">Love</option>
+      <option value="Power">Knowledge</option>
+    </select>
+    <br>
+    <br>
+    <p>I see, I see, and are you happy with your answers?</p>
+    <p>A new wand would cost you 20 Galleons</p>
+    <br>
+    <br>
+    <button type="submit" id='wand-buy-button'>Confirm Purchase</button>
+  </form>
+  
+
+
+</div>
