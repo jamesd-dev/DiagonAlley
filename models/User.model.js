@@ -28,6 +28,10 @@ const userSchema = new Schema(
     money: {
       type: Number,
       required: true
+    },
+    ownsWand: {
+      type: Boolean,
+      default: false
     }
   },
   {

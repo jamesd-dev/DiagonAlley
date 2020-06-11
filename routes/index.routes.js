@@ -360,6 +360,7 @@ router.post('/wands/buy', (req, res) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs', { layout: false });
   } else {
+    const user = req.session.loggedInUser;
     const { date, wish, flexi } = req.body;
     let wood = 'error';
     let core = 'error';
@@ -449,7 +450,19 @@ router.post('/wands/buy', (req, res) => {
 
     let length = Math.ceil(Math.random() * 5) + 7;
 
-    res.render(`shop/wand-result.hbs`, { user: req.session.loggedInUser, wood, core, flexibility, length });
+    // make the wand object
+    ShopModel.create({ icon: "fas fa-star", name : user.username + "'s wand", description : "A " + wood + " wand with a " + core + " core, " + length + " inches long and " + flexibility + ".", itemType: 'wand', money: 0, author: user.username })
+        .then((response) => {
+          UserModel.findOneAndUpdate({ _id: user._id }, { $push: { ownedItems: [{ _id: response._id }] } }).then(() => {
+            UserModel.findOneAndUpdate({ _id: user._id }, { ownsWand: true }).then(() => {
+              res.render(`shop/wand-result.hbs`, { user, wood, core, length, flexibility});
+            });
+          });
+        })
+        .catch(response => {
+          console.log('failed to create new wand: ', response);
+          res.render(`shop/wand-shop.hbs`, { user });
+        });
   }
 });
 
