@@ -44,16 +44,21 @@ router.get('/shop/:shopType', (req, res) => {
     ShopModel.find({ itemType: shopType })
       .then(items => {
         // sets owned property to true on item if this user already has it
-        const toggledItems = items.map(item => {
-          if (item.owners.includes(userId)) {
-            item.owned = true;
-          } else {
-            item.owned = false;
-          }
-          return item;
-        });
-        // owned property is used to set a class name and alter the state of html if an item is owned or not.
-        res.render('shop/shop.hbs', { userData: req.session.loggedInUser, type: shopType, name: shopName, items: toggledItems });
+        UserModel.findById(userId).then((user) => {
+          const toggledItems = items.map(item => {
+              if (user.ownedItems.includes(item._id)) {
+                item.owned = true;
+              } else {
+                item.owned = false;
+              }
+              return item;
+          });
+
+          // owned property is used to set a class name and alter the state of html if an item is owned or not.
+          res.render('shop/shop.hbs', { userData: req.session.loggedInUser, type: shopType, name: shopName, items: toggledItems });
+
+        })
+        .catch(() => {console.log('failed to find user');});
       })
       .catch(() => {
         // replace list of items with an error
@@ -66,7 +71,6 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs');
   } else {
-
     // Step 1 get user and item id
     const userId = req.session.loggedInUser._id;
     const itemId = req.params.itemId;
@@ -90,37 +94,32 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
         console.log(userMoney, itemCost, total);
 
         if (total >= 0) {
-          
           // Step 5 update databases
-          let updateUserMoney = UserModel.findOneAndUpdate({_id: userId}, {money: total});
-          let updateUserItems = UserModel.findOneAndUpdate({_id: userId}, {$push: {ownedItems: [{_id: itemId}]}});
-          let updateItemOwners = ShopModel.findOneAndUpdate({_id: itemId}, {$push: {owners: [{_id: userId}]}});
+          let updateUserMoney = UserModel.findOneAndUpdate({ _id: userId }, { money: total });
+          let updateUserItems = UserModel.findOneAndUpdate({ _id: userId }, { $push: { ownedItems: [{ _id: itemId }] } });
 
-          Promise.all([updateUserMoney, updateUserItems, updateItemOwners])
-          .then(() => {
+          Promise.all([updateUserMoney, updateUserItems])
+            .then(() => {
+              // keep session info up to date
+              UserModel.findById(userId)
+                .then(user => {
+                  req.session.loggedInUser = user;
 
-            // keep session info up to date
-            UserModel.findById(userId)
-            .then((user) => {
-              req.session.loggedInUser = user;
-
-              // redirect to page
-              // has to update session first
-              res.redirect(`/shop/${req.params.shopType}`);
+                  // redirect to page
+                  // has to update session first
+                  res.redirect(`/shop/${req.params.shopType}`);
+                })
+                .catch(() => {
+                  console.log('failed to update user session');
+                });
             })
             .catch(() => {
-              console.log('failed to update user session');
+              console.log('failed to get update user money and item and user dbs');
             });
-
-          })
-          .catch(() => {
-            console.log('failed to get update user money and item and user dbs');
-          });
-
         } else {
           // user doesn't have enough money
           // res.render('shop/shop.hbs', {errorMessage: "You don't have enought money"});
-          res.render('users/profile.hbs', {errorMessage: "You don't have enought money"});
+          res.render('users/profile.hbs', { errorMessage: "You don't have enought money" });
         }
       })
       .catch(() => {
@@ -133,7 +132,6 @@ router.post('/shop/:shopType/:itemId/delete', (req, res, next) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs');
   } else {
-
     // Step 1 get user and item id
     const userId = req.session.loggedInUser._id;
     const itemId = req.params.itemId;
@@ -157,37 +155,32 @@ router.post('/shop/:shopType/:itemId/delete', (req, res, next) => {
         console.log(userMoney, itemCost, total);
 
         if (total >= 0) {
-          
           // Step 5 update databases
-          let updateUserMoney = UserModel.findOneAndUpdate({_id: userId}, {money: total});
-          let updateUserItems = UserModel.findOneAndUpdate({_id: userId}, {$pullAll: {ownedItems: [{_id: itemId}]}});
-          let updateItemOwners = ShopModel.findOneAndUpdate({_id: itemId}, {$pullAll: {owners: [{_id: userId}]}});
+          let updateUserMoney = UserModel.findOneAndUpdate({ _id: userId }, { money: total });
+          let updateUserItems = UserModel.findOneAndUpdate({ _id: userId }, { $pullAll: { ownedItems: [{ _id: itemId }] } });
 
-          Promise.all([updateUserMoney, updateUserItems, updateItemOwners])
-          .then(() => {
+          Promise.all([updateUserMoney, updateUserItems])
+            .then(() => {
+              // keep session info up to date
+              UserModel.findById(userId)
+                .then(user => {
+                  req.session.loggedInUser = user;
 
-            // keep session info up to date
-            UserModel.findById(userId)
-            .then((user) => {
-              req.session.loggedInUser = user;
-
-              // redirect to page
-              // has to update session first
-              res.redirect(`/shop/${req.params.shopType}`);
+                  // redirect to page
+                  // has to update session first
+                  res.redirect(`/shop/${req.params.shopType}`);
+                })
+                .catch(() => {
+                  console.log('failed to update user session');
+                });
             })
             .catch(() => {
-              console.log('failed to update user session');
+              console.log('failed to get update user money and item and user dbs');
             });
-
-          })
-          .catch(() => {
-            console.log('failed to get update user money and item and user dbs');
-          });
-
         } else {
           // user doesn't have enough money
           // res.render('shop/shop.hbs', {errorMessage: "You don't have enought money"});
-          res.render({errorMessage: "You don't have enought money"});
+          res.render({ errorMessage: "You don't have enought money" });
           res.redirect(`/shop/${req.params.shopType}`);
         }
       })
@@ -219,7 +212,7 @@ router.post('/shop/:shopType/:itemId/update', (req, res, next) => {
   } else {
     const itemId = req.params.itemId;
     const { name, description } = req.body;
-    ShopModel.findByIdAndUpdate({itemId }, { $set: { name, description } })
+    ShopModel.findByIdAndUpdate({ itemId }, { $set: { name, description } })
       .then(response => {
         res.redirect(`/shop/${req.params.shopType}`);
       })

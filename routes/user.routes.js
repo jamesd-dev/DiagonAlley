@@ -50,15 +50,8 @@ router.post('/profile/:itemId/delete', (req, res, next) => {
   const itemId = req.params.itemId;
   UserModel.updateOne({_id: userId}, {$pullAll: {ownedItems: [{_id: req.params.itemId}]}})
   .then(() => {
-    ShopModel.updateOne({_id: itemId}, {$pullAll: {owners: [{_id: userId}]}})
-    .then(() => {
-      console.log('deleted');
-      res.redirect(`/profile`);
-    })
-    .catch(() => {
-      console.log('failed to remove owner from object');
-      res.redirect(`/profile`);
-    });
+    console.log('deleted');
+    res.redirect(`/profile`);
   })
   .catch((r) => {
     console.log('failed to remove item from profile', r);
