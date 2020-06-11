@@ -3,7 +3,7 @@ body {
   background-color: grey;
   display: flex;
   justify-content: center;
-  background-image: url('/images/brick-pattern-greyscale.png');
+  background-image: url('https://i.imgur.com/phjRXgL.png');
   font-family: hpFont;
   color: white;
 }
