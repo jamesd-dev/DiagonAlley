@@ -70,6 +70,16 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
   const userId = req.session.loggedInUser._id;
   const itemId = req.params.itemId;
 
+
+  //find user money and minus from it shop item money
+  const {money} = req.body;
+  UserModel.findByIdAndUpdate({_id: itemId}, {$set: {money}});
+  
+  // UserModel.findOneAndUpdate({_id: userId}, {$set: {money: [{money: itemId}]}})
+  // UserModel.findOne({_id: userId}, {money});
+
+
+
   UserModel.findOneAndUpdate({_id: userId}, {$push: {ownedItems: [{_id: itemId}]}})
   .then(() => {
     ShopModel.findOneAndUpdate({_id: itemId}, {$push: {owners: [{_id: userId}]}})
