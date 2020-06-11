@@ -277,6 +277,25 @@ router.get('/wands', (req, res) => {
   }
 });
 
+router.post('/wands/buy', (req, res) => {
+  if (!req.session.loggedInUser) {
+    res.render('auth/home.hbs', {layout: false});
+  } else {
+    const {date, wish} = req.body;
+    let wood = 'error'
+    let month = parseInt(date.split('-')[1]);
+    let day = parseInt(date.split('-')[2]);
+    
+    if(month == 1) {
+      if(day <= 24) {
+        //dfewf
+      }
+    }
+
+    res.render(`shop/wand-shop.hbs`, {user: req.session.loggedInUser});
+  }
+});
+
 router.get('/search', (req, res) => {
   if(!req.session.loggedInUser) {
     res.render('auth/home.hbs', {layout: false});
