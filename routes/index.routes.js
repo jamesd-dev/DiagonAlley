@@ -467,4 +467,26 @@ router.get('/search', (req, res) => {
   }
 });
 
+
+// Profile change
+let hogwartsHouse = "default"
+      switch (user.hogwartsHouse) {
+        case 'gryffindor':
+          hogwartsHouse= 'https://i.imgur.com/UF0PCnX.png';
+          break;
+        case 'slytherin':
+          hogwartsHouse = 'https://i.imgur.com/bv26wuu.png';
+          break;
+        case 'hufflepuff':
+          hogwartsHouse = "https://i.imgur.com/ONkMuUh.png";
+          break;
+        case 'ravenclaw':
+          hogwartsHouse = 'https://i.imgur.com/UANFH1L.png';
+          break;
+        case 'unsorted':
+          hogwartsHouse = 'https://i.imgur.com/7H86YqI.png';
+          break; 
+        default: 'https://i.imgur.com/7H86YqI.png'
+      }
+
 module.exports = router;
