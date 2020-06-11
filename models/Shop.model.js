@@ -22,6 +22,10 @@ let shopSchema = new Schema(
       enum: ['pet', 'book', 'potion', 'cloak'],
       required: true
     },
+    money: {
+      type: Number,
+      required: true
+    },
     owners: [{
       type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }],

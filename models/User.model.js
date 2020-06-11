@@ -24,7 +24,11 @@ const userSchema = new Schema(
       },
     ownedItems: [{
       type: mongoose.Schema.Types.ObjectId, ref: 'Shop'
-    }]
+    }],
+    money: {
+      type: Number,
+      required: true
+    }
   },
   {
     timestamps: true

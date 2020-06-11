@@ -69,6 +69,7 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
   } else {
   const userId = req.session.loggedInUser._id;
   const itemId = req.params.itemId;
+
   UserModel.findOneAndUpdate({_id: userId}, {$push: {ownedItems: [{_id: itemId}]}})
   .then(() => {
     ShopModel.findOneAndUpdate({_id: itemId}, {$push: {owners: [{_id: userId}]}})
