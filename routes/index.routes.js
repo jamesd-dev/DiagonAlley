@@ -277,4 +277,13 @@ router.get('/wands', (req, res) => {
   }
 });
 
+router.get('/search', (req, res) => {
+  if(!req.session.loggedInUser) {
+    res.render('auth/home.hbs', {layout: false});
+  } else {
+    res.render('shop/search.hbs');
+  }
+});
+
+
 module.exports = router;

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagon Alley</title>
+    <script src="https://kit.fontawesome.com/69e6589eb5.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="../images/allhouses.png">
+</head>
+
+<body>
+
+
+
+    <div class="title-panel">
+        <h1 class="title">Search</h1>
+    </div>
+    {{!-- 
+<img src="/images/iron-bracket.png" alt="iron-bracket" id="left-bracket">
+<img src="/images/iron-bracket.png" alt="iron-bracket" id="right-bracket"> --}}
+
+    <div class="shop-items-panel main-panel">
+        <ul class='shop-item-list'>
+            <li class="unowned create-shop-item">
+
+
+
+                <div class="wrap">
+                    <div class="search">
+                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                
+                <div class="shop-item">
+                </div>
+            </li>
+            {{#each items}}
+            <li class="{{#if this.owned}}owned{{else}}unowned{{/if}}">
+                <div class="shop-item">
+
+                    <div class="icon-panel">
+                        <i class="{{this.icon}}"></i>
+                    </div>
+
+                    <div class="item-text-panel">
+
+                        <div class="name-panel">
+                            <p>{{this.name}}</p>
+                        </div>
+                        <div class="desc-panel">
+                            <p>{{this.description}}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="button-panel">
+                        {{#if this.owned}}
+                        <form method="POST" action="/shop/{{../type}}/{{this._id}}/delete">
+                            <button type="submit" class="shop-button shop-delete-button"><i
+                                    class="fas fa-minus"></i></button>
+                        </form>
+                        {{else}}
+                        <form method="POST" action="/shop/{{../type}}/{{this._id}}/add">
+                            <button type="submit" class="shop-button shop-add-button"><i
+                                    class="fas fa-plus"></i></button>
+                        </form>
+                        {{/if}}
+                        {{#if this.author}}
+                        <a href="/shop/{{../type}}/{{_id}}/update" class="shop-button shop-update-button"><i
+                                class="fas fa-pen"></i></a>
+                        {{/if}}
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</body>
+
+</html>
