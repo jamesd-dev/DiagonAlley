@@ -166,7 +166,9 @@ router.get('/shop/:shopType/create', (req, res) => {
         break;
       case 'cloak' :
         shopName = 'Madam Malkin\'s Robes';
-        break;  
+        break; 
+      default:
+        res.redirect('/not-found'); 
     }
 
     res.render('shop/create.hbs', {type: shopType, name: shopName});
@@ -199,7 +201,9 @@ router.post('/shop/:shopType/create', (req, res, next) => {
         break;
       case 'cloak' :
         shopName = 'Madam Malkin\'s Robes';
-        break;  
+        break; 
+      default:
+        res.redirect('/not-found'); 
     }
       res.status(500)
       .render('shop/create.hbs', {type: shopType, name: shopName, errorMessage: 'Please use letters only'});
@@ -221,6 +225,8 @@ router.post('/shop/:shopType/create', (req, res, next) => {
       case 'cloak' :
         shopName = 'Madam Malkin\'s Robes';
         break;  
+      default:
+        res.redirect('/not-found');
     }
       res.status(500)
       .render('shop/create.hbs', {type: shopType, name: shopName, errorMessage: 'Please use letters only'});
@@ -233,8 +239,8 @@ router.post('/shop/:shopType/create', (req, res, next) => {
     res.redirect(307, `/shop/${req.params.shopType}/${response._id}/add`);
   })
   .catch ((response) => {
-    res.redirect(`/shop/${req.params.shopType}/create`);
     console.log('failed to create new item: ', response);
+    res.redirect(`/shop/${req.params.shopType}/create`);
   });
 }
   }
@@ -281,18 +287,92 @@ router.post('/wands/buy', (req, res) => {
   if (!req.session.loggedInUser) {
     res.render('auth/home.hbs', {layout: false});
   } else {
-    const {date, wish} = req.body;
-    let wood = 'error'
+    const {date, wish, flexi} = req.body;
+    let wood = 'error';
+    let core = 'error';
+    let flexibility = 'error';
     let month = parseInt(date.split('-')[1]);
     let day = parseInt(date.split('-')[2]);
-    
-    if(month == 1) {
-      if(day <= 24) {
-        //dfewf
-      }
+  
+    if (month === 12 && day >= 24) {
+      wood = 'Birch';
+    } else if (month === 1 && day <= 20) {
+      wood = 'Birch';
+    } else if (month === 1 && day >= 21) {
+      wood = 'Rowan';
+    } else if (month === 2 && day <= 17) {
+      wood = 'Rowan';
+    } else if (month === 2 && day >= 18) {
+      wood = 'Ash';
+    } else if (month === 3 && day <= 17) {
+      wood = 'Ash';
+    } else if (month === 3 && day >= 18) {
+      wood = 'Alder';
+    } else if (month === 4 && day <= 14) {
+      wood = 'Alder';
+    } else if (month === 4 && day >= 15) {
+      wood = 'Willow';
+    } else if (month === 5 && day <= 12) {
+      wood = 'Willow';
+    } else if (month === 5 && day >= 13) {
+      wood = 'Hawthorn';
+    } else if (month === 6 && day <= 9) {
+      wood = 'Hawthorn';
+    } else if (month === 6 && day >= 16) {
+      wood = 'Oak';
+    } else if (month === 7 && day <= 7) {
+      wood = 'Oak';
+    } else if (month === 7 && day >= 8) {
+      wood = 'Holly';
+    } else if (month === 8 && day <= 4) {
+      wood = 'Holly';
+    } else if (month === 8 && day >= 5) {
+      wood = 'Hazel';
+    } else if (month === 9 && day <= 1) {
+      wood = 'Hazel';
+    } else if (month === 9 && day >= 2) {
+      wood = 'Vine';
+    } else if (month === 9 && day <= 29) {
+      wood = 'Vine';
+    } else if (month === 9 && day >= 30) {
+      wood = 'Ivy';
+    } else if (month === 10 && day <= 27) {
+      wood = 'Ivy';
+    } else if (month === 10 && day >= 28) {
+      wood = 'Reed';
+    } else if (month === 11 && day <= 24) {
+      wood = 'Reed';
+    } else if (month === 11 && day >= 25) {
+      wood = 'Elder';
+    } else if (month === 12 && day <= 23) {
+      wood = 'Elder';
     }
 
-    res.render(`shop/wand-shop.hbs`, {user: req.session.loggedInUser});
+    if (wish === 'Power') {core = 'Dragon Heartstring';}
+    else if (wish === 'Love') {core = 'Unicorn hair';}
+    else if (wish === 'Courage') {core = 'Phoenix Feather';}
+
+    if (flexi < 20) {
+      flexibility = 'Brittle';
+    } else if (flexi < 30) {
+      flexibility = 'Unyielding';
+    } else if (flexi < 40) {
+      flexibility = 'Rigid';
+    } else if (flexi < 50) {
+      flexibility = 'Firm';
+    } else if (flexi < 60) {
+      flexibility = 'A little flexible';
+    } else if (flexi < 70) {
+      flexibility = 'Giving';
+    } else if (flexi < 80) {
+      flexibility = 'Springy';
+    } else if (flexi < 100) {
+      flexibility = 'Whippy';
+    }
+
+    let length = Math.ceil(Math.random() * 5) + 7;
+
+    res.render(`shop/wand-shop.hbs`, {user: req.session.loggedInUser, wood, core, flexibility, length});
   }
 });
 

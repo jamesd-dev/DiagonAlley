@@ -62,14 +62,39 @@
   margin-bottom: 1rem;
 }
 
-#wand-calc-link {
-  color: #777777;
-  text-decoration: none;
-  font-weight: 700;
+#wand-flex-question-label {
+  color: white;
+  padding: 2rem 0 0;
 }
 
-#wand-calc-link:hover {
-  color: white;
+#slider-div {
+  display: flex;
+  align-items: center;
+}
+
+#slider-div p {
+  margin: 0;
+  text-align: center;
+}
+
+#wand-flex-question {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  outline: none;
+  height: .5rem;
+  border-radius: .25rem;
+  margin: 0 1rem;
+}
+
+#wand-flex-question::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  transform: rotate(45deg);
+  background: white;
+  cursor: pointer;
 }
 
 #wand-buy-button {

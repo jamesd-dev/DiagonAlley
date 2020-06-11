@@ -1,7 +1,3 @@
-<head>
-  <link rel="stylesheet" href="/stylesheets/orreyStyle.css">
-  <link rel="stylesheet" href="/stylesheets/wandStyle.css">
-</head>
 
 <div class="title-panel" id='wand-title-panel'>
   <h1 class="title" id='wand-title'>Ollivander's</h1>
@@ -58,8 +54,14 @@
     <select id='wand-wish-question' name='wish'>
       <option value="Power">Power</option>
       <option value="Power">Love</option>
-      <option value="Power">Knowledge</option>
+      <option value="Power">Courage</option>
     </select>
+    <label for="flexi" id = 'wand-flex-question-label'>Ah I see! And how flexible would you say you are in your thinking?</label>
+    <div id="slider-div">
+      <p>Not at all</p>
+      <input type="range" id="wand-flex-question" class="slider" min="0" max="100" value="0" name='flexi'>
+      <p>Very!</p>
+    </div>
     <br>
     <br>
     <p>I see, I see, and are you happy with your answers?</p>
