@@ -117,9 +117,10 @@ router.post('/shop/:shopType/:itemId/add', (req, res, next) => {
               console.log('failed to get update user money and item and user dbs');
             });
         } else {
+          // const user = req.session.loggedInUser;
           // user doesn't have enough money
-          // res.render('shop/shop.hbs', {errorMessage: "You don't have enought money"});
-          res.render('users/profile.hbs', { errorMessage: "You don't have enought money" });
+          res.redirect('/profile');
+          //render('users/profile.hbs', {user, errorMessage: "You don't have enought money, sell some items to get more"});
         }
       })
       .catch(() => {
