@@ -33,7 +33,27 @@ router.get('/profile', (req, res) => {
         return collection;
       }, {});
 
-      res.render('users/profile.hbs', {sortedItems, user});
+      let house = '';
+      console.log(req.session.loggedInUser.hogwartsHouse);
+      switch (req.session.loggedInUser.hogwartsHouse) {
+        case 'gryffindor':
+          house = 'https://i.imgur.com/UF0PCnX.png';
+          break;
+        case 'slytherin':
+          house = 'https://i.imgur.com/bv26wuu.png';
+          break;
+        case 'hufflepuff':
+          house = "https://i.imgur.com/ONkMuUh.png";
+          break;
+        case 'ravenclaw':
+          house = 'https://i.imgur.com/UANFH1L.png';
+          break; 
+        default: house = 'https://i.imgur.com/7H86YqI.png';
+      }
+
+      console.log(house);
+
+      res.render('users/profile.hbs', {sortedItems, user, house});
     })
     .catch(() => {
       console.log('something went wrong');
