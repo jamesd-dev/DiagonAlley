@@ -108,6 +108,8 @@ https://github.com/polymurph13/DiagonAlley
 
 Deploy Link
 
+https://diagonalley.herokuapp.com/shop/pet
+
 ### Slides
 https://drive.google.com/file/d/1_tm_tzr9XOAbmVTPbszFlssG8VcPu0TH/view?usp=sharing
 
