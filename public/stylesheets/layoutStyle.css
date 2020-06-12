@@ -196,6 +196,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* shop styles */
+.error {
+  background: #f02b63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 5px;
+  text-decoration: center;
+  width: 100%;
+}
 
 .title-panel {
   background-color: var(--bg-primary);
